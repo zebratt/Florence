@@ -1,0 +1,27 @@
+#AccountSafe{
+  .title{
+    line-height: 25px;
+    border-bottom: #bbb solid 1px;
+    font-size: 16px;
+    padding-bottom: 8px;
+  }
+
+  .table{
+    width: 100%;
+
+    td{
+      line-height: 25px;
+    }
+
+    .btn-modify{
+      width: 60px;
+      height: 28px;
+      background-color: #ce2629;
+      font-size: 12px;
+      margin: 5px 0;
+      color: #fff;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+}

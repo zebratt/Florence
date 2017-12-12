@@ -1,0 +1,49 @@
+@font-face {
+    font-family: "iconfont";
+    src: url("../../icons/dist/iconfont.eot?eafc2af0bcd07e9583cca394a3649451?#iefix") format("embedded-opentype"),
+url("../../icons/dist/iconfont.woff?eafc2af0bcd07e9583cca394a3649451") format("woff"),
+url("../../icons/dist/iconfont.ttf?eafc2af0bcd07e9583cca394a3649451") format("truetype");
+}
+
+.icon {
+    display: inline-block;
+    line-height: 1;
+}
+
+.icon:before {
+    font-family: iconfont !important;
+    font-style: normal;
+    font-weight: normal !important;
+    vertical-align: top;
+}
+
+    .i-arrow_right:before {
+        content: "\f101";
+    }
+    .i-back:before {
+        content: "\f102";
+    }
+    .i-close:before {
+        content: "\f103";
+    }
+    .i-collection:before {
+        content: "\f104";
+    }
+    .i-forward:before {
+        content: "\f105";
+    }
+    .i-home:before {
+        content: "\f106";
+    }
+    .i-magnifying:before {
+        content: "\f107";
+    }
+    .i-mine:before {
+        content: "\f108";
+    }
+    .i-password:before {
+        content: "\f109";
+    }
+    .i-user:before {
+        content: "\f10a";
+    }

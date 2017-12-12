@@ -1,0 +1,21 @@
+//common
+$commonFontColor : #888;
+$commonColorGreen : #29D0A2;
+$commonBorderColor : #e5e5e5;
+$commonBackgroundColor : #FAFAFA;
+
+//z-index
+$level-1 : 1000;
+$level-2 : 900;
+$level-3 : 800;
+$level-4 : 700;
+$level-5 : 600;
+
+//page
+html, body{
+    background: $commonBackgroundColor;
+}
+
+.g-page{
+    background: $commonBackgroundColor;
+}

@@ -1,0 +1,32 @@
+#BankCard{
+  .header{
+    overflow: hidden;
+
+    .btn-add{
+      float: right;
+      padding: 6px 20px;
+      color: #fff;
+      background-color: #ce2629;
+      font-size: 13px;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+
+  .title{
+    margin-top: 20px;
+    line-height: 25px;
+    border-bottom: #bbb solid 1px;
+    font-size: 16px;
+    padding-bottom: 8px;
+  }
+
+  .table{
+    margin-top: 10px;
+    width: 100%;
+
+    tr.tl{
+      text-align: left;
+    }
+  }
+}

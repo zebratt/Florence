@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iconfont</title>
+    <style>
+        {{{styles}}}
+    </style>
+</head>
+<body>
+<h1>iconfont</h1>
+{{#names}}
+    <div class="preview">
+		<span class="preview__icon">
+			<span class="{{../baseSelector}} {{../classPrefix}}{{.}}"></span>
+		</span>
+        <span>{{.}}</span>
+    </div>
+{{/names}}
+</body>
+</html>

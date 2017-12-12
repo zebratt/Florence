@@ -1,0 +1,49 @@
+#PersonalCenter{
+  .main{
+    display: flex;
+    width: 1000px;
+    margin: 40px auto;
+    border: 1px solid #e5e5e5;
+    background: #F4F0F0;
+
+    .menu{
+      min-width: 200px;
+      height: 600px;
+
+      .title{
+        line-height: 50px;
+        background: #D22E34;
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .profile{
+        box-sizing: border-box;
+        padding: 20px;
+        height: 120px;
+        border-bottom: #e5e5e5 solid 1px;
+      }
+
+      .menus{
+        .item{
+          line-height: 45px;
+          text-align: center;
+          font-size: 14px;
+          cursor: pointer;
+        }
+
+        .active{
+          color: #D22E34;
+        }
+      }
+    }
+
+    .content{
+      background: #fff;
+      flex: 1;
+      border-left: 1px solid #e5e5e5;
+      padding: 20px;
+    }
+  }
+}

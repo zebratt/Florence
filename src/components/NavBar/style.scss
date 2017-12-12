@@ -1,0 +1,35 @@
+#NavBar{
+  background: #fff;
+  border-bottom: #e5e5e5 solid 1px;
+
+  .content{
+    margin: 0 auto;
+    width: 1000px;
+    overflow: hidden;
+
+    .tabs{
+      float: right;
+
+      li{
+        display: inline-block;
+        width: 90px;
+        line-height: 81px;
+        font-size: 17px;
+        cursor: pointer;
+
+        a{
+          text-decoration: none;
+          color: #555;
+
+          &:visited{
+            color: #555;
+          }
+        }
+
+        a.active{
+          color: #CF292C;
+        }
+      }
+    }
+  }
+}

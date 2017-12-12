@@ -1,0 +1,1 @@
+export const QUERY_FUND_DETAILS = 'QUERY_FUND_DETAILS';
