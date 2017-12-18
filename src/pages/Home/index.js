@@ -44,8 +44,6 @@ class Home extends Component {
           Cookies.set('TOKEN', token, { expires: 30 });
 
           updateLogin(true, token, cwpCustomers);
-
-          history.push('/stock');
         } else {
           notification.error({
             message: res.msg

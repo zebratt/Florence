@@ -1,0 +1,1 @@
+export const GET_REAL_NAME_STATUS = 'GET_REAL_NAME_STATUS';

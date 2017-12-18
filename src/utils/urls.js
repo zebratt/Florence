@@ -22,3 +22,10 @@ export const URL_QUERY_FUNDS_DETAILS = '/serverInterface/homePage/queryFundsDeta
 
 // BankCard
 export const URL_QUERY_BANK_CARD = '/serverInterface/bank/queryBankCard' // 查询用户所有银行卡
+export const URL_WITHDRAW = '/serverInterface/homePage/withdrawalsApply' // 提现
+export const URL_ADD_BANKCARD = '/serverInterface/bank/addBankCard' //添加银行卡
+
+// Safe
+export const URL_REAL_NAME = '/serverInterface/login/isRealName' // 是否实名认证
+export const URL_GO_REAL_NAME = '/serverInterface/login/realNameAuthentication' // 去实名认证
+

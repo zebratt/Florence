@@ -1,80 +1,84 @@
-#MyHome{
-  .top{
-    display: flex;
-    width: 100%;
-    margin-top: 30px;
+#MyHome {
+    .top {
+        display: flex;
+        width: 100%;
+        margin-top: 30px;
 
-    .flex-1{
-      flex-basis: 33.3%;
-      text-align: center;
+        .flex-1 {
+            flex-basis: 33.3%;
+            text-align: center;
+        }
+
+        .balance {
+            border: #d22e34 solid 6px;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            box-sizing: border-box;
+            padding-top: 50px;
+            font-size: 16px;
+            margin: 0 auto;
+        }
+
+        .coupon {
+            font-size: 16px;
+            box-sizing: border-box;
+            padding-top: 50px;
+        }
+
+        .red {
+            color: #d22e34;
+        }
+
+        .btn {
+            width: 80%;
+            line-height: 40px;
+            color: #fff;
+            border-radius: 5px;
+            border: 0;
+            margin-top: 42px;
+            font-size: 16px;
+        }
+
+        .btn-charge {
+            background: #2ebfe0;
+        }
+
+        .btn-withdraw {
+            background: #d22e34;
+        }
     }
 
-    .balance{
-      border: #D22E34 solid 6px;
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      text-align: center;
-      box-sizing: border-box;
-      padding-top: 50px;
-      font-size: 16px;
-      margin: 0 auto;
+    .title {
+        margin-top: 50px;
+        line-height: 25px;
+        border-bottom: #bbbbbb solid 1px;
+        font-size: 16px;
+        padding-bottom: 8px;
     }
 
-    .coupon{
-      font-size: 16px;
-      box-sizing: border-box;
-      padding-top: 50px;
+    .table {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+        line-height: 25px;
+
+        .tl {
+            font-weight: 600;
+        }
     }
 
-    .red{
-      color: #D22E34;
+    .table-nav {
+        margin-top: 20px;
+        text-align: right;
+
+        span {
+            margin: 0 5px;
+        }
+
+        .btn {
+            margin: 0 10px;
+        }
     }
-
-    .btn{
-      width: 80%;
-      line-height: 40px;
-      color: #fff;
-      border-radius: 5px;
-      border: 0;
-      margin-top: 42px;
-      font-size: 16px;
-    }
-
-    .btn-charge{
-      background: #2EBFE0;
-    }
-
-    .btn-withdraw{
-      background: #D22E34;
-    }
-  }
-
-  .title{
-    margin-top: 50px;
-    line-height: 25px;
-    border-bottom: #bbbbbb solid 1px;
-    font-size: 16px;
-    padding-bottom: 8px;
-  }
-
-  .table{
-    margin-top: 10px;
-    width: 100%;
-    text-align: center;
-    line-height: 25px;
-  }
-
-  .table-nav{
-    margin-top: 20px;
-    text-align: right;
-
-    span{
-      margin: 0 5px;
-    }
-
-    .btn{
-      margin: 0 10px;
-    }
-  }
 }

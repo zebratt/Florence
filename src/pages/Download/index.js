@@ -1,20 +1,15 @@
-/**
- * Created by xuejian.xu on 2017/12/12.
- */
+import * as React from 'react';
+import Header from 'components/Header';
+import NavBar from 'components/NavBar';
 
-import './style.scss';
-import React from 'react';
-import NavBar from '../../components/NavBar/index';
-import Header from '../../components/Header/index';
-
-export default ()=>{
-  return (
-    <div id="Download">
-      <Header />
-      <NavBar />
-      <div className="main">
-        软件下载
-      </div>
-    </div>
-  );
+export default () => {
+    return (
+        <div id="Download">
+            <Header />
+            <NavBar />
+            <div className="main">
+                软件下载
+            </div>
+        </div>
+    )
 }

@@ -15,7 +15,7 @@ import { notification } from 'antd';
 import _get from 'lodash/get';
 
 class Header extends Component {
-  onQuitHandler() {
+  onQuitHandler = () => {
     Cookies.remove('TOKEN');
 
     this.props.updateLogin(false, '', '');
@@ -30,7 +30,7 @@ class Header extends Component {
   render() {
     const { loginStatus, cwpCustomers } = this.props;
     const loginBtnContent = loginStatus
-      ? <a onClick={::this.onQuitHandler} href="javascript:void(0)">退出</a>
+      ? <a onClick={this.onQuitHandler} href="javascript:void(0)">退出</a>
       : <Link to="/">登陆</Link>;
     const name = _get(cwpCustomers, 'customerName');
 

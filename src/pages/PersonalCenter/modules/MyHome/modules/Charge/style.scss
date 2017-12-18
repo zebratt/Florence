@@ -1,0 +1,72 @@
+#Charge {
+    .charge-title {
+        line-height: 25px;
+        border-bottom: #bbb solid 1px;
+        font-size: 16px;
+        padding-bottom: 8px;
+    }
+
+    .nav {
+        margin-top: 25px;
+
+        li {
+            display: inline-block;
+            line-height: 30px;
+            width: 100px;
+            text-align: center;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        li.active {
+            border-bottom: #d22e34 solid 2px;
+        }
+    }
+
+    .alipay{
+        .qr-code{
+            display: block;
+            margin: 20px auto;
+        }
+
+        .line{
+            margin: 10px 0;
+        }
+        
+        .red{
+            color: #d22e34;
+        }
+    }
+
+    .bankcard{
+        padding: 20px 0;
+
+        .bold{
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .line{
+            margin: 10px 0;
+        }
+
+        .charge-table{
+            width: 100%;
+            margin-top: 20px;
+            border-top: #e5e5e5 solid 1px;
+            border-left: #e5e5e5 solid 1px;
+
+            .logo{
+                position: absolute;
+                width: 150px;
+                height: 50px;
+            }
+
+            td{
+                border-right: #e5e5e5 solid 1px;
+                border-bottom: #e5e5e5 solid 1px;
+                padding: 12px;
+            }
+        }
+    }
+}

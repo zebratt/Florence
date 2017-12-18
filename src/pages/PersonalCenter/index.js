@@ -14,98 +14,83 @@ import BankCard from './modules/BankCard/index';
 import AccountSafe from './modules/AccountSafe/index';
 import Promote from './modules/Promote/index';
 import { connect } from 'react-redux';
-
-const tabs = [
-  {
-    name: '我的首页',
-    key: 'MyHome'
-  },
-  {
-    name: '银行卡管理',
-    key: 'BankCard'
-  },
-  {
-    name: '账户安全',
-    key: 'AccountSafe'
-  },
-  {
-    name: '推广赚钱',
-    key: 'Promote'
-  }
-];
+import { Route } from 'react-router-dom';
+import tabs from './tabs';
 
 class PersonalCenter extends Component {
-  state = {
-    currentTabKey: 'MyHome',
-    currentComp: MyHome
-  };
+    constructor(props) {
+        super(props);
 
-  onMenuTabClick(key) {
-    this.setState({
-      currentTabKey: key
-    });
-  }
-
-  renderBody(currentTabKey) {
-    const {customerId} = this.props;
-
-    if(!customerId){
-      return <div>请先登录！</div>
+        this.state = {
+            currentTabKey: props.match.params.tab || 'home'
+        };
     }
 
-    switch (currentTabKey) {
-      case 'MyHome':
-        return <MyHome {...this.props} />;
-      case 'BankCard':
-        return <BankCard {...this.props} />;
-      case 'AccountSafe':
-        return <AccountSafe {...this.props} />;
-      case 'Promote':
-        return <Promote {...this.props} />;
+    onMenuTabClick(key) {
+        this.props.history.push('/personal/' + key);
+
+        this.setState({
+            currentTabKey: key
+        });
     }
-  }
 
-  render() {
-    const { currentTabKey, currentComp } = this.state;
-    const {cwpCustomers: {customerName}} = this.props;
+    render() {
+        const { currentTabKey } = this.state;
+        const { customerId, cwpCustomers: { customerName } } = this.props;
 
+        let tabContent = null;
 
-    return (
-      <div id="PersonalCenter">
-        <Header />
-        <NavBar />
-        <div className="main">
-          <div className="menu">
-            <div className="title">会员中心</div>
-            <div className="profile">欢迎您：{customerName}</div>
-            <div className="menus">
-              {tabs.map(tab => {
-                const classes = classNames({
-                  item: true,
-                  active: tab.key === currentTabKey
-                });
+        if (!customerId) {
+            tabContent = (
+                <div className="content">
+                    <div>请先登录!</div>
+                </div>
+            );
+        } else {
+            tabContent = (
+                <div className="content">
+                    <Route path="/personal/home" component={MyHome} />
+                    <Route path="/personal/bankcard" component={BankCard} />
+                    <Route path="/personal/safe" component={AccountSafe} />
+                    <Route path="/personal/promote" component={Promote} />
+                </div>
+            );
+        }
 
-                return (
-                  <div key={tab.key} className={classes} onClick={this.onMenuTabClick.bind(this, tab.key)}>
-                    {tab.name}
-                  </div>
-                );
-              })}
+        return (
+            <div id="PersonalCenter">
+                <Header history={this.props.history} />
+                <NavBar />
+                <div className="main">
+                    <div className="menu">
+                        <div className="title">会员中心</div>
+                        <div className="profile">欢迎您：{customerName}</div>
+                        <div className="menus">
+                            {tabs.map(tab => {
+                                const classes = classNames({
+                                    item: true,
+                                    active: tab.key === currentTabKey
+                                });
+
+                                return (
+                                    <div key={tab.key} className={classes} onClick={this.onMenuTabClick.bind(this, tab.key)}>
+                                        {tab.name}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    {tabContent}
+                </div>
             </div>
-          </div>
-          <div className="content">
-            {this.renderBody(currentTabKey)}
-          </div>
-        </div>
-      </div>
-    );
-  }
+        );
+    }
 }
 
 const mapStateToProps = state => {
-  const { Home } = state;
+    const { Home } = state;
 
-  return Object.assign({}, Home);
+    return Object.assign({}, Home);
 };
 
 export default connect(mapStateToProps)(PersonalCenter);

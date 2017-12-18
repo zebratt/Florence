@@ -29,7 +29,7 @@ class NavBar extends Component{
               </NavLink>
             </li>
             <li>
-              <NavLink isActive={this.isActive} to="/personal">
+              <NavLink isActive={this.isActive} to="/personal/home">
                 <span>个人中心</span>
               </NavLink>
             </li>

@@ -1,8 +1,8 @@
 @font-face {
     font-family: "iconfont";
-    src: url("../../icons/dist/iconfont.eot?eafc2af0bcd07e9583cca394a3649451?#iefix") format("embedded-opentype"),
-url("../../icons/dist/iconfont.woff?eafc2af0bcd07e9583cca394a3649451") format("woff"),
-url("../../icons/dist/iconfont.ttf?eafc2af0bcd07e9583cca394a3649451") format("truetype");
+    src: url("../../icons/dist/iconfont.eot?359a510ac4e5d904ed4f95f1df1e1f5c?#iefix") format("embedded-opentype"),
+url("../../icons/dist/iconfont.woff?359a510ac4e5d904ed4f95f1df1e1f5c") format("woff"),
+url("../../icons/dist/iconfont.ttf?359a510ac4e5d904ed4f95f1df1e1f5c") format("truetype");
 }
 
 .icon {
@@ -23,27 +23,30 @@ url("../../icons/dist/iconfont.ttf?eafc2af0bcd07e9583cca394a3649451") format("tr
     .i-back:before {
         content: "\f102";
     }
-    .i-close:before {
+    .i-checked:before {
         content: "\f103";
     }
-    .i-collection:before {
+    .i-close:before {
         content: "\f104";
     }
-    .i-forward:before {
+    .i-collection:before {
         content: "\f105";
     }
-    .i-home:before {
+    .i-forward:before {
         content: "\f106";
     }
-    .i-magnifying:before {
+    .i-home:before {
         content: "\f107";
     }
-    .i-mine:before {
+    .i-magnifying:before {
         content: "\f108";
     }
-    .i-password:before {
+    .i-mine:before {
         content: "\f109";
     }
-    .i-user:before {
+    .i-password:before {
         content: "\f10a";
+    }
+    .i-user:before {
+        content: "\f10b";
     }
