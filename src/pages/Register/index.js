@@ -111,9 +111,9 @@ class Register extends Component {
         axios
             .post(URL_REGISTER, {
                 customerPhone: phone,
-                password: password,
+                customerPassword: password,
                 code: verifyCodeVal,
-                parentId: agentId
+                agentId: agentId
             })
             .then(res => {
                 if (res.code == 1) {
