@@ -14,15 +14,15 @@ const reducer = handleActions(
     [UPDATE_LOGIN]: (state, action) => {
       const { status, token, cwpCustomers } = action.payload;
 
-      return { loginStatus: status, token: token, customerId: cwpCustomers.customerId, cwpCustomers: cwpCustomers };
+      return { loginStatus: status, token: token, customerId: cwpCustomers.id, cwpCustomers: cwpCustomers };
     },
     [QUERY_CUSTOMER_BY_TOKEN]: (state, action)=>{
-      const {token, customerId} = action.payload;
+      const {token, id} = action.payload;
       const nState = _cloneDeep(state);
 
       nState.loginStatus = true;
       nState.token = token;
-      nState.customerId = customerId;
+      nState.customerId = id;
       nState.cwpCustomers = action.payload;
 
       return nState;

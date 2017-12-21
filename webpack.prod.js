@@ -8,6 +8,7 @@ module.exports = merge(common, {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[chunkhash:8].js',
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({

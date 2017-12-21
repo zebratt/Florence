@@ -30,7 +30,7 @@ class Verify extends React.Component {
                 client_token: token,
                 customerCardId: card,
                 customerRealName: name,
-                customerId: customerId
+                id: customerId
             })
             .then(res => {
                 if (res.code != 1) {

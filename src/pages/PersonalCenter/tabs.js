@@ -12,7 +12,11 @@ export default [
         key: 'safe'
     },
     {
-        name: '推广赚钱',
-        key: 'promote'
+        name: '充值入金',
+        key: 'charge/bankcard'
+    },
+    {
+        name: '提款出金',
+        key: 'withdraw'
     }
 ];

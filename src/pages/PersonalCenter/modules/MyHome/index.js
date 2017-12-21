@@ -4,41 +4,39 @@
  * @date: 2017/11/18.
  */
 
-import './style.scss';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import actions from './action';
-import _get from 'lodash/get';
-import { Route } from 'react-router-dom';
-import Charge from './modules/Charge';
-import Withdraw from './modules/Withdraw';
+import './style.scss'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import actions from './action'
+import _get from 'lodash/get'
+import { Route } from 'react-router-dom'
 
 class MyHome extends Component {
     componentDidMount() {
-        const { queryFundDetails, customerId, token } = this.props;
+        const { queryFundDetails, customerId, token } = this.props
 
         if (customerId) {
-            queryFundDetails(customerId, token, 0);
+            queryFundDetails(customerId, token, 0)
         }
     }
 
     onNavButtonClick(isPrev) {
-        const { queryFundDetails, customerId, token, currentPageIndex, totalPages } = this.props;
+        const { queryFundDetails, customerId, token, currentPageIndex, totalPages } = this.props
 
         if (isPrev) {
             if (currentPageIndex > 0) {
-                queryFundDetails(customerId, token, currentPageIndex - 1);
+                queryFundDetails(customerId, token, currentPageIndex - 1)
             }
         } else {
             if (currentPageIndex < totalPages - 1) {
-                queryFundDetails(customerId, token, currentPageIndex + 1);
+                queryFundDetails(customerId, token, currentPageIndex + 1)
             }
         }
     }
 
     render() {
-        const { history, fundDetails, currentPageIndex, totalPages, cwpCustomers } = this.props;
+        const { history, fundDetails, currentPageIndex, totalPages, cwpCustomers } = this.props
 
         return (
             <div>
@@ -46,27 +44,24 @@ class MyHome extends Component {
                     <div className="flex-1">
                         <div className="balance">
                             <p>账户余额</p>
-                            <p className="red">{_get(cwpCustomers, 'cwpFunds.balance', '获取失败')}</p>
+                            <p className="red">{_get(cwpCustomers, 'cwpFunds.balance', 0)}</p>
                         </div>
                     </div>
                     <div className="flex-1">
-                        <button
-                            className="btn btn-charge"
-                            onClick={() => {
-                                history.push('home/charge/bankcard');
-                            }}
-                        >
-                            充值
+                        <div className="fund">
+                            <p>盘中权益资金</p>
+                            <p className="tip">(请以终端或刷新后的数据为准)</p>
+                            <p className="red">6666</p>
+                        </div>
+                    </div>
+                    <div className="flex-1">
+                        <button className="btn btn-charge" onClick={() => {}}>
+                            刷新
                         </button>
                     </div>
                     <div className="flex-1">
-                        <button
-                            className="btn btn-withdraw"
-                            onClick={() => {
-                                history.push('home/withdraw');
-                            }}
-                        >
-                            提现
+                        <button className="btn btn-withdraw" onClick={() => {}}>
+                            结算
                         </button>
                     </div>
                 </div>
@@ -83,7 +78,7 @@ class MyHome extends Component {
                     </thead>
                     <tbody>
                         {fundDetails.map(item => {
-                            const flowWay = item.flowWay === 0 ? '支出' : '收入';
+                            const flowWay = item.flowWay === 0 ? '支出' : '收入'
 
                             return (
                                 <tr key={item.fundsDetailsId}>
@@ -93,7 +88,7 @@ class MyHome extends Component {
                                     <td>{item.changeTime}</td>
                                     <td>{item.remark}</td>
                                 </tr>
-                            );
+                            )
                         })}
                     </tbody>
                 </table>
@@ -107,26 +102,24 @@ class MyHome extends Component {
                     </button>
                 </div>
             </div>
-        );
+        )
     }
 }
 
 const mapStateToProps = state => {
-    const { MyHome, Home } = state;
+    const { MyHome, Home } = state
 
-    return Object.assign({}, MyHome, Home);
-};
+    return Object.assign({}, MyHome, Home)
+}
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators(actions, dispatch);
-};
+    return bindActionCreators(actions, dispatch)
+}
 
 export default () => {
     return (
         <div id="MyHome">
-            <Route path="/personal/home/charge/:tab" component={Charge} />
-            <Route path="/personal/home/withdraw" component={Withdraw} />
             <Route exact path="/personal/home" component={connect(mapStateToProps, mapDispatchToProps)(MyHome)} />
         </div>
-    );
-};
+    )
+}

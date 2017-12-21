@@ -4,57 +4,59 @@
  * @date: 2017/11/18.
  */
 
-import './style.scss';
-import React, { Component } from 'react';
-import NavBar from '../../components/NavBar/index';
-import Header from '../../components/Header/index';
-import classNames from 'classnames';
-import MyHome from './modules/MyHome';
-import BankCard from './modules/BankCard/index';
-import AccountSafe from './modules/AccountSafe/index';
-import Promote from './modules/Promote/index';
-import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
-import tabs from './tabs';
+import './style.scss'
+import React, { Component } from 'react'
+import NavBar from '../../components/NavBar/index'
+import Header from '../../components/Header/index'
+import classNames from 'classnames'
+import MyHome from './modules/MyHome'
+import BankCard from './modules/BankCard/index'
+import AccountSafe from './modules/AccountSafe/index'
+import Charge from './modules/Charge'
+import Withdraw from './modules/Withdraw'
+import { connect } from 'react-redux'
+import { Route } from 'react-router-dom'
+import tabs from './tabs'
 
 class PersonalCenter extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             currentTabKey: props.match.params.tab || 'home'
-        };
+        }
     }
 
     onMenuTabClick(key) {
-        this.props.history.push('/personal/' + key);
+        this.props.history.push('/personal/' + key)
 
         this.setState({
             currentTabKey: key
-        });
+        })
     }
 
     render() {
-        const { currentTabKey } = this.state;
-        const { customerId, cwpCustomers: { customerName } } = this.props;
+        const { currentTabKey } = this.state
+        const { customerId, cwpCustomers: { customerName } } = this.props
 
-        let tabContent = null;
+        let tabContent = null
 
         if (!customerId) {
             tabContent = (
                 <div className="content">
                     <div>请先登录!</div>
                 </div>
-            );
+            )
         } else {
             tabContent = (
                 <div className="content">
                     <Route path="/personal/home" component={MyHome} />
                     <Route path="/personal/bankcard" component={BankCard} />
                     <Route path="/personal/safe" component={AccountSafe} />
-                    <Route path="/personal/promote" component={Promote} />
+                    <Route path="/personal/charge" component={Charge} />
+                    <Route path="/personal/withdraw" component={Withdraw} />
                 </div>
-            );
+            )
         }
 
         return (
@@ -70,27 +72,31 @@ class PersonalCenter extends Component {
                                 const classes = classNames({
                                     item: true,
                                     active: tab.key === currentTabKey
-                                });
+                                })
 
                                 return (
-                                    <div key={tab.key} className={classes} onClick={this.onMenuTabClick.bind(this, tab.key)}>
+                                    <div
+                                        key={tab.key}
+                                        className={classes}
+                                        onClick={this.onMenuTabClick.bind(this, tab.key)}
+                                    >
                                         {tab.name}
                                     </div>
-                                );
+                                )
                             })}
                         </div>
                     </div>
                     {tabContent}
                 </div>
             </div>
-        );
+        )
     }
 }
 
 const mapStateToProps = state => {
-    const { Home } = state;
+    const { Home } = state
 
-    return Object.assign({}, Home);
-};
+    return Object.assign({}, Home)
+}
 
-export default connect(mapStateToProps)(PersonalCenter);
+export default connect(mapStateToProps)(PersonalCenter)

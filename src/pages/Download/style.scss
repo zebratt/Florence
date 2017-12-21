@@ -1,0 +1,28 @@
+#Download {
+  .main {
+    width: 1000px;
+    margin: 40px auto;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+
+    .title{
+        background: #ce2629;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+    }
+
+    .name{
+        display: inline-block;
+        margin: 20px;
+        font-size: 14px;
+    }
+
+    .btn{
+        padding: 3px 8px;
+        border: #e5e5e5 solid 1px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+  }
+}

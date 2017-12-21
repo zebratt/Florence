@@ -29,8 +29,8 @@ class Home extends Component {
 
     axios
       .post(URL_LOGIN, {
-        customerName: username,
-        password: password
+        customerPhone: username,
+        customerPassword: password
       })
       .then(res => {
         if (res.code == 1) {

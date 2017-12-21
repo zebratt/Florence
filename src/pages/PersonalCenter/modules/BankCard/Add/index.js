@@ -51,7 +51,7 @@ class AddCard extends React.Component {
         axios
             .post(URL_ADD_BANKCARD, {
                 client_token: token,
-                bankAdress: branch,
+                bankAddress: branch,
                 bankCity: city,
                 bankprovince: province,
                 bankName: bankName,
