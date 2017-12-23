@@ -11,7 +11,7 @@
   .login{
     width: 1000px;
     position: absolute;
-    top: 114px;
+    top: 77px;
     left: 50%;
     margin-left: -500px;
 
@@ -67,23 +67,12 @@
       }
 
       .buttons{
-        display: flex;
-
-        .left{
-          flex-grow: 1;
-        }
-
-        .right{
-          flex-grow: 1;
-          text-align: right;
-        }
-
         .btn{
           background-color: #d42b2e;
           color: #fff;
           height: 36px;
+          width: 100%;
           font-size: 18px;
-          width: 90px;
           text-align: center;
           line-height: 36px;
           border: 0;

@@ -3653,7 +3653,7 @@ html, body {
   #Home .login {
     width: 1000px;
     position: absolute;
-    top: 114px;
+    top: 77px;
     left: 50%;
     margin-left: -500px; }
     #Home .login .content {
@@ -3696,23 +3696,16 @@ html, body {
         display: inline-block; }
         #Home .login .content .forget:hover {
           color: #fff; }
-      #Home .login .content .buttons {
-        display: flex; }
-        #Home .login .content .buttons .left {
-          flex-grow: 1; }
-        #Home .login .content .buttons .right {
-          flex-grow: 1;
-          text-align: right; }
-        #Home .login .content .buttons .btn {
-          background-color: #d42b2e;
-          color: #fff;
-          height: 36px;
-          font-size: 18px;
-          width: 90px;
-          text-align: center;
-          line-height: 36px;
-          border: 0;
-          cursor: pointer; }
+      #Home .login .content .buttons .btn {
+        background-color: #d42b2e;
+        color: #fff;
+        height: 36px;
+        width: 100%;
+        font-size: 18px;
+        text-align: center;
+        line-height: 36px;
+        border: 0;
+        cursor: pointer; }
 #NavBar {
   background: #fff;
   border-bottom: #e5e5e5 solid 1px; }
@@ -3879,6 +3872,8 @@ html, body {
     text-align: center;
     box-sizing: border-box;
     font-size: 16px; }
+    #MyHome .top .balance .red {
+      margin-top: 24px; }
   #MyHome .top .fund {
     line-height: 2;
     text-align: center;
@@ -3899,7 +3894,7 @@ html, body {
     color: #fff;
     border-radius: 5px;
     border: 0;
-    margin-top: 42px;
+    margin-top: 7px;
     font-size: 16px; }
   #MyHome .top .btn-charge {
     background: #2ebfe0; }
@@ -3912,6 +3907,24 @@ html, body {
   border-bottom: #bbbbbb solid 1px;
   font-size: 16px;
   padding-bottom: 8px; }
+
+#MyHome .deposit {
+  margin-top: 50px; }
+  #MyHome .deposit .label {
+    font-size: 16px; }
+  #MyHome .deposit .input {
+    margin-left: 15px;
+    border: #e5e5e5 solid 1px;
+    width: 150px;
+    padding: 3px; }
+  #MyHome .deposit .btn-confirm {
+    margin-left: 15px;
+    padding: 5px 12px;
+    border: 0;
+    border-radius: 3px;
+    background: #d22e34;
+    color: #fff;
+    cursor: pointer; }
 
 #MyHome .table {
   margin-top: 10px;
@@ -5537,8 +5550,10 @@ textarea.ant-input {
     color: #fff; }
   #Download .main .name {
     display: inline-block;
-    margin: 20px;
-    font-size: 14px; }
+    margin: 0 20px;
+    font-size: 14px;
+    width: 140px;
+    padding: 10px 0; }
   #Download .main .btn {
     padding: 3px 8px;
     border: #e5e5e5 solid 1px;

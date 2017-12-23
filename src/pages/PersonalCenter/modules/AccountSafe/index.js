@@ -30,7 +30,7 @@ class AccountSafe extends Component {
             green: hasRealName
         });
         const realNameContent = hasRealName ? (
-            <span>认证通过</span>
+            <span>已确认</span>
         ) : (
             <button className="btn" onClick={this.gotoVerify}>
                 去认证

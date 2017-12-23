@@ -14,6 +14,10 @@
             text-align: center;
             box-sizing: border-box;
             font-size: 16px;
+
+            .red{
+                margin-top: 24px;
+            }
         }
 
         .fund {
@@ -44,7 +48,7 @@
             color: #fff;
             border-radius: 5px;
             border: 0;
-            margin-top: 42px;
+            margin-top: 7px;
             font-size: 16px;
         }
 
@@ -63,6 +67,32 @@
         border-bottom: #bbbbbb solid 1px;
         font-size: 16px;
         padding-bottom: 8px;
+    }
+
+    .deposit{
+        margin-top: 50px;
+
+        .label{
+            font-size: 16px;
+        }
+
+        .input{
+            margin-left: 15px;
+            border: #e5e5e5 solid 1px;
+            width: 150px;
+            padding: 3px;
+        }
+
+        .btn-confirm{
+            margin-left: 15px;
+            padding: 5px 12px;
+            border: 0;
+            border-radius: 3px;
+            background: #d22e34;
+            color: #fff;
+            cursor: pointer;
+        }
+
     }
 
     .table {

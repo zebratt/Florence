@@ -38,10 +38,8 @@ class Header extends Component {
       <div id="Header">
         <div className="content">
           <div className="right">
-            {name && <span>欢迎: {name}</span>}
+            {name && <span>您的交易账户是: {name}</span>}
             {loginBtnContent}
-            <span>|</span>
-            <Link to="/register">注册</Link>
           </div>
         </div>
       </div>

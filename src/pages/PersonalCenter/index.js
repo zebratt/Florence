@@ -37,7 +37,7 @@ class PersonalCenter extends Component {
 
     render() {
         const { currentTabKey } = this.state
-        const { customerId, cwpCustomers: { customerName } } = this.props
+        const { customerId, cwpCustomers: { customerName, customerPhone } } = this.props
 
         let tabContent = null
 
@@ -66,7 +66,10 @@ class PersonalCenter extends Component {
                 <div className="main">
                     <div className="menu">
                         <div className="title">会员中心</div>
-                        <div className="profile">欢迎您：{customerName}</div>
+                        <div className="profile">
+                            <p>欢迎您：{customerPhone}</p>
+                            <p>交易账户：{customerName}</p>
+                        </div>
                         <div className="menus">
                             {tabs.map(tab => {
                                 const classes = classNames({

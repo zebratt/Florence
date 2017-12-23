@@ -26,7 +26,7 @@ module.exports = merge(common, {
     new DashboardPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: '点赢宝',
+      title: '起点',
       template: 'template.ejs'
     }),
     new webpack.DefinePlugin({
