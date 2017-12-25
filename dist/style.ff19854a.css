@@ -3653,7 +3653,7 @@ html, body {
   #Home .login {
     width: 1000px;
     position: absolute;
-    top: 77px;
+    top: 114px;
     left: 50%;
     margin-left: -500px; }
     #Home .login .content {
@@ -5552,7 +5552,7 @@ textarea.ant-input {
     display: inline-block;
     margin: 0 20px;
     font-size: 14px;
-    width: 140px;
+    width: 180px;
     padding: 10px 0; }
   #Download .main .btn {
     padding: 3px 8px;

@@ -106,7 +106,7 @@ class Register extends Component {
             });
         }
 
-        const agentId = getQueryString('agent');
+        const agentId = getQueryString('agentId');
 
         axios
             .post(URL_REGISTER, {

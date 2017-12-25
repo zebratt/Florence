@@ -80,7 +80,7 @@ class MyHome extends Component {
             customerId,
             client_token: token
         }).then((res) => {
-            if(res != 1){
+            if(res.code != 1){
                 notification.error({
                     message: res.msg
                 })
@@ -114,6 +114,8 @@ class MyHome extends Component {
                     <div className="flex-1">
                         <button className="btn btn-charge" onClick={() => {
                             this.props.queryBalance(customerId, token);
+                            this.props.queryFundDetails(customerId, token, currentPageIndex);
+                            this.props.queryBalance(customerId, token);
                         }}>
                             刷新
                         </button>
@@ -139,7 +141,7 @@ class MyHome extends Component {
                         <tr className="tl">
                             <td>流向</td>
                             <td>变动金额</td>
-                            <td>充值金额</td>
+                            <td>账户余额</td>
                             <td>变动时间</td>
                             <td>备注信息</td>
                         </tr>

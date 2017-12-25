@@ -33,7 +33,7 @@ class AccountSafe extends Component {
             <span>已确认</span>
         ) : (
             <button className="btn" onClick={this.gotoVerify}>
-                去认证
+                去添加
             </button>
         );
 
