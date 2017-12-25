@@ -11,7 +11,7 @@ import { bindActionCreators } from 'redux'
 import actions from './action'
 import _get from 'lodash/get'
 import { Route } from 'react-router-dom'
-import { notification } from 'antd';
+import { notification } from 'antd'
 import { URL_DEPOSIT, URL_SETTLE } from 'utils/urls'
 
 class MyHome extends Component {
@@ -19,12 +19,16 @@ class MyHome extends Component {
         depositVal: ''
     }
     componentDidMount() {
+        this.update(0)
+    }
+
+    update = currentPageIndex => {
         const { queryBalance, queryFundDetails, queryFundBalance, customerId, token } = this.props
 
         if (customerId) {
-            queryFundDetails(customerId, token, 0);
-            queryBalance(customerId, token);
-            queryFundBalance(customerId, token);
+            queryFundDetails(customerId, token, currentPageIndex)
+            queryBalance(customerId, token)
+            queryFundBalance(customerId, token)
         }
     }
 
@@ -43,57 +47,74 @@ class MyHome extends Component {
     }
 
     onDepositConfirmHandler = () => {
-        const {depositVal} = this.state;
-        const {customerId, token} = this.props;
+        const { depositVal } = this.state
+        const { customerId, token, currentPageIndex } = this.props
 
-        if(!/^\d+$/.test(depositVal)){
+        if (!/^\d+$/.test(depositVal)) {
             return notification.warning({
                 message: '投入资金格式有误，请重新输入！'
             })
         }
 
-        axios.post(URL_DEPOSIT, {
-            customerId: customerId,
-            amount: depositVal,
-            client_token: token
-        }).then((res) => {
-            if(res.code != 1){
-                notification.error({
-                    message: res.msg
-                })
-            }else{
-                notification.success({
-                    message: '投入成功！'
-                })
+        axios
+            .post(URL_DEPOSIT, {
+                customerId: customerId,
+                amount: depositVal,
+                client_token: token
+            })
+            .then(res => {
+                if (res.code != 1) {
+                    notification.error({
+                        message: res.msg
+                    })
+                } else {
+                    notification.success({
+                        message: '投入成功！'
+                    })
 
-                this.setState({
-                    depositVal: ''
-                })
-            }
-        })
+                    this.setState({
+                        depositVal: ''
+                    })
+
+                    this.update(currentPageIndex)
+                }
+            })
     }
 
     onSettleHandler = () => {
-        const {customerId, token} = this.props;
+        const { customerId, token, currentPageIndex } = this.props
 
-        axios.post(URL_SETTLE, {
-            customerId,
-            client_token: token
-        }).then((res) => {
-            if(res.code != 1){
-                notification.error({
-                    message: res.msg
-                })
-            }else{
-                notification.success({
-                    message: '结算成功！'
-                })
-            }
-        })
+        axios
+            .post(URL_SETTLE, {
+                customerId,
+                client_token: token
+            })
+            .then(res => {
+                if (res.code != 1) {
+                    notification.error({
+                        message: res.msg
+                    })
+                } else {
+                    notification.success({
+                        message: '结算成功！'
+                    })
+                    this.update(currentPageIndex)
+                }
+            })
     }
 
     render() {
-        const { history, fundDetails, currentPageIndex, totalPages, cwpCustomers,balance, fundBalance, customerId, token } = this.props
+        const {
+            history,
+            fundDetails,
+            currentPageIndex,
+            totalPages,
+            cwpCustomers,
+            balance,
+            fundBalance,
+            customerId,
+            token
+        } = this.props
 
         return (
             <div>
@@ -112,11 +133,12 @@ class MyHome extends Component {
                         </div>
                     </div>
                     <div className="flex-1">
-                        <button className="btn btn-charge" onClick={() => {
-                            this.props.queryBalance(customerId, token);
-                            this.props.queryFundDetails(customerId, token, currentPageIndex);
-                            this.props.queryBalance(customerId, token);
-                        }}>
+                        <button
+                            className="btn btn-charge"
+                            onClick={() => {
+                                this.update(currentPageIndex)
+                            }}
+                        >
                             刷新
                         </button>
                     </div>
@@ -128,12 +150,19 @@ class MyHome extends Component {
                 </div>
                 <div className="deposit">
                     <span className="label">投入盘中资金：</span>
-                    <input className="input" type="text" value={this.state.depositVal} onChange={(eve) => {
-                        this.setState({
-                            depositVal: eve.target.value
-                        })
-                    }}/>
-                    <button className="btn-confirm" onClick={this.onDepositConfirmHandler}>确认</button>
+                    <input
+                        className="input"
+                        type="text"
+                        value={this.state.depositVal}
+                        onChange={eve => {
+                            this.setState({
+                                depositVal: eve.target.value
+                            })
+                        }}
+                    />
+                    <button className="btn-confirm" onClick={this.onDepositConfirmHandler}>
+                        确认
+                    </button>
                 </div>
                 <div className="title">资金明细</div>
                 <table className="table">
