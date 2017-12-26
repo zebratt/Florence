@@ -53,7 +53,7 @@ class AddCard extends React.Component {
                 client_token: token,
                 bankAddress: branch,
                 bankCity: city,
-                bankprovince: province,
+                bankProvince: province,
                 bankName: bankName,
                 customerId: customerId,
                 bankCardId: cardVal
