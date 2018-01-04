@@ -4,36 +4,41 @@
  * @date: 2017/11/18.
  */
 
-import './style.scss';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import actions from './action';
-import { Route } from 'react-router-dom';
-import AddCard from './Add';
+import './style.scss'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import actions from './action'
+import { Route } from 'react-router-dom'
+import AddCard from './Add'
 
-const auditStatus = ['', '待审核', '审核通过', '审核失败'];
+const auditStatus = ['', '待审核', '审核通过', '审核失败']
 
 class BankCard extends Component {
     componentDidMount() {
-        const { queryBankCard, customerId, token } = this.props;
-        queryBankCard(customerId, token);
+        const { queryBankCard, customerId, token } = this.props
+        queryBankCard(customerId, token)
     }
     render() {
-        const { bankcards } = this.props;
+        const { bankcards } = this.props
+        let addContent = null;
+
+        if (!bankcards.length) {
+            addContent = (
+                <button
+                    className="btn-add"
+                    onClick={() => {
+                        this.props.history.push('bankcard/add')
+                    }}
+                >
+                    添加新的银行卡
+                </button>
+            )
+        }
 
         return (
             <div>
-                <div className="header">
-                    <button
-                        className="btn-add"
-                        onClick={() => {
-                            this.props.history.push('bankcard/add');
-                        }}
-                    >
-                        添加新的银行卡
-                    </button>
-                </div>
+                <div className="header">{addContent}</div>
                 <div className="title">我的银行卡</div>
                 <table className="table">
                     <thead>
@@ -57,24 +62,24 @@ class BankCard extends Component {
                                     <td>{card.bankAdress}</td>
                                     <td>{auditStatus[card.auditStatus]}</td>
                                 </tr>
-                            );
+                            )
                         })}
                     </tbody>
                 </table>
             </div>
-        );
+        )
     }
 }
 
 const mapStateToProps = state => {
-    const { BankCard, Home } = state;
+    const { BankCard, Home } = state
 
-    return Object.assign({}, BankCard, Home);
-};
+    return Object.assign({}, BankCard, Home)
+}
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators(actions, dispatch);
-};
+    return bindActionCreators(actions, dispatch)
+}
 
 export default () => {
     return (
@@ -82,5 +87,5 @@ export default () => {
             <Route path="/personal/bankcard/add" component={AddCard} />
             <Route exact path="/personal/bankcard" component={connect(mapStateToProps, mapDispatchToProps)(BankCard)} />
         </div>
-    );
-};
+    )
+}
