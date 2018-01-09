@@ -1,12 +1,12 @@
-import './style.scss';
-import React, { Component } from 'react';
-import NavBar from '../../components/NavBar/index';
-import Header from '../../components/Header/index';
-import { URL_REGISTER, URL_SEND_VERITY_CODE } from '../../utils/urls';
-import { notification } from 'antd';
-import classNames from 'classnames';
-import VCode from '../../utils/VCode';
-import { getQueryString } from '../../utils/utils';
+import './style.scss'
+import React, { Component } from 'react'
+import NavBar from '../../components/NavBar/index'
+import Header from '../../components/Header/index'
+import { URL_REGISTER, URL_SEND_VERITY_CODE } from '../../utils/urls'
+import { notification } from 'antd'
+import classNames from 'classnames'
+import VCode from '../../utils/VCode'
+import { getQueryString } from '../../utils/utils'
 
 class Register extends Component {
     state = {
@@ -16,44 +16,45 @@ class Register extends Component {
         checkStatus: true,
         verifyText: '获取验证码',
         verifyUnderCounting: false,
-        verifyCodeVal: ''
-    };
+        verifyCodeVal: '',
+        isSubmiting: false
+    }
 
     componentDidMount() {
         this.vcode = new VCode({
             onTick: lastTime => {
                 this.setState({
                     verifyText: lastTime + 's'
-                });
+                })
             },
             onEnd: () => {
                 this.setState({
                     verifyUnderCounting: false,
                     verifyText: '获取验证码'
-                });
+                })
             }
-        });
+        })
     }
 
-    onVerifySendClick() {
-        const { verifyUnderCounting, phone } = this.state;
+    onVerifySendClick = () => {
+        const { verifyUnderCounting, phone } = this.state
 
         //如果正在倒计时，直接返回
         if (verifyUnderCounting) {
-            return;
+            return
         }
 
         if (!/\d{11}/.test(phone)) {
             return notification.warning({
                 message: '手机号格式有误，请重新输入！'
-            });
+            })
         }
 
         this.setState({
             verifyUnderCounting: true
-        });
+        })
 
-        this.vcode.start();
+        this.vcode.start()
 
         axios
             .post(URL_SEND_VERITY_CODE, {
@@ -64,54 +65,62 @@ class Register extends Component {
                 if (res.code != 1) {
                     notification.error({
                         message: res.msg
-                    });
+                    })
                 } else {
                     notification.success({
                         message: '验证码发送成功！'
-                    });
+                    })
                 }
-            });
+            })
     }
 
-    onNextHandler() {
-        const { phone, password, passwordConfirm, checkStatus, verifyCodeVal } = this.state;
+    onNextHandler = () => {
+        const { phone, password, passwordConfirm, checkStatus, verifyCodeVal, isSubmiting } = this.state
+
+        if (isSubmiting) {
+            return
+        }
+
+        this.setState({
+            isSubmiting: true
+        })
 
         if (!checkStatus) {
             return notification.warning({
                 message: '请先阅读并同意协议！'
-            });
+            })
         }
 
         if (!/\d{11}/.test(phone)) {
             return notification.warning({
                 message: '手机号格式有误，请重新输入！'
-            });
+            })
         }
 
         if (!password) {
             return notification.warning({
                 message: '密码不能为空！'
-            });
+            })
         }
 
         if (password !== passwordConfirm) {
             return notification.warning({
                 message: '两次密码输入不一致，请重新输入！'
-            });
+            })
         }
 
         if (!/\d{6}/.test(verifyCodeVal)) {
             return notification.warning({
                 message: '验证码格式有误！'
-            });
+            })
         }
 
-        const agentId = getQueryString('agentId');
+        const agentId = getQueryString('agentId')
 
         axios
             .post(URL_REGISTER, {
                 customerPhone: phone,
-                customerPassword: password,
+                password: password,
                 code: verifyCodeVal,
                 agentId: agentId
             })
@@ -121,15 +130,19 @@ class Register extends Component {
                         message: '注册成功！',
                         duration: 1,
                         onClose: () => {
-                            this.props.history.push('/');
+                            this.props.history.push('/')
                         }
-                    });
+                    })
                 } else {
                     notification.error({
                         message: res.msg
-                    });
+                    })
                 }
-            });
+
+                this.setState({
+                    isSubmiting: false
+                })
+            })
     }
 
     onChangeHandler(eve) {
@@ -137,30 +150,30 @@ class Register extends Component {
             case 'phone':
                 this.setState({
                     phone: eve.target.value
-                });
+                })
 
-                break;
+                break
             case 'password':
                 this.setState({
                     password: eve.target.value
-                });
+                })
 
-                break;
+                break
             case 'password-confirm':
                 this.setState({
                     passwordConfirm: eve.target.value
-                });
+                })
 
-                break;
+                break
         }
     }
 
     render() {
-        const { phone, password, passwordConfirm, checkStatus, verifyUnderCounting, verifyText, verifyCodeVal } = this.state;
+        const { phone, password, passwordConfirm, checkStatus, verifyUnderCounting, verifyText, verifyCodeVal, isSubmiting } = this.state
         const btnVerifyClasses = classNames({
             'btn-verify': true,
             disabled: verifyUnderCounting
-        });
+        })
 
         return (
             <div className="g-page" id="Register">
@@ -189,13 +202,13 @@ class Register extends Component {
                                             onChange={eve => {
                                                 this.setState({
                                                     verifyCodeVal: eve.target.value
-                                                });
+                                                })
                                             }}
                                             placeholder="请输入验证码"
                                         />
                                     </div>
                                     <div className="right">
-                                        <button className={btnVerifyClasses} onClick={::this.onVerifySendClick}>
+                                        <button className={btnVerifyClasses} onClick={this.onVerifySendClick}>
                                             {verifyText}
                                         </button>
                                     </div>
@@ -208,7 +221,7 @@ class Register extends Component {
                                         onChange={() => {
                                             this.setState({
                                                 checkStatus: !checkStatus
-                                            });
+                                            })
                                         }}
                                     />
                                     <span>我已阅兵并同意</span>
@@ -216,16 +229,16 @@ class Register extends Component {
                                         《系统服务协议》
                                     </a>
                                 </div>
-                                <button className="btn-next" onClick={::this.onNextHandler}>
-                                    下一步
+                                <button className="btn-next" onClick={this.onNextHandler}>
+                                    {isSubmiting ? '请稍后' : '下一步'}
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default Register;
+export default Register
