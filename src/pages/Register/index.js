@@ -120,7 +120,7 @@ class Register extends Component {
         axios
             .post(URL_REGISTER, {
                 customerPhone: phone,
-                password: password,
+                customerPassword: password,
                 code: verifyCodeVal,
                 agentId: agentId
             })
