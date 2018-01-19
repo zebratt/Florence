@@ -5,6 +5,7 @@ import imgLogo from './images/bank-logo.jpg'
 import imgQr from './images/alipay.png'
 import classNames from 'classnames'
 import tabs from './tabs'
+import {connect} from 'react-redux'
 
 export default class Charge extends React.Component {
     constructor(props) {
@@ -46,6 +47,15 @@ export default class Charge extends React.Component {
                 </ul>
                 <Route exact path="/personal/charge/bankcard" component={Bankcard} />
                 <Route exact path="/personal/charge/alipay" component={Alipay} />
+                <Route
+                    exact
+                    path="/personal/charge/online"
+                    component={connect(state => {
+                        const { Home } = state
+
+                        return Object.assign({}, Home)
+                    })(Online)}
+                />
             </div>
         )
     }
@@ -92,4 +102,47 @@ const Bankcard = () => {
             </div>
         </div>
     )
+}
+
+class Online extends React.Component {
+    state = {
+        amountVal: ''
+    }
+    onChangeHandler = eve => {
+        this.setState({
+            amountVal: eve.target.value
+        })
+    }
+    onSubmitHandler = eve => {
+        const { amountVal } = this.state
+        const { customerId } = this.props
+
+        if (!/^\d+$/.test(amountVal)) {
+            return notification.warning({
+                message: '金额输入有误！'
+            })
+        }
+
+        const params = [`amount=${amountVal}`, `paymod=plain`, `customerId=${customerId}`]
+        location.href = '/serverInterface/netpay/placeOrder?' + params.join('&')
+    }
+    render() {
+        return (
+            <div className="online">
+                <label htmlFor="chargeAmount">充值金额：</label>
+                <input
+                    name="amount"
+                    maxLength="6"
+                    className="charge-input"
+                    id="chargeAmount"
+                    type="text"
+                    value={this.state.amountVal}
+                    onChange={this.onChangeHandler}
+                />
+                <button className="btn-confirm" onClick={this.onSubmitHandler}>
+                    确定
+                </button>
+            </div>
+        )
+    }
 }

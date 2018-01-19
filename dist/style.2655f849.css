@@ -5464,6 +5464,22 @@ textarea.ant-input {
       border-right: #e5e5e5 solid 1px;
       border-bottom: #e5e5e5 solid 1px;
       padding: 12px; }
+
+#Charge .online {
+  padding: 20px;
+  font-size: 14px; }
+  #Charge .online .charge-input {
+    border: #e5e5e5 solid 1px;
+    margin-left: 10px;
+    height: 30px;
+    padding: 0 5px; }
+  #Charge .online .btn-confirm {
+    margin-left: 10px;
+    background: #d22e34;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer; }
 #Withdraw .withdraw-title {
   line-height: 25px;
   border-bottom: #bbb solid 1px;
