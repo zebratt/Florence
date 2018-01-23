@@ -6,6 +6,7 @@ import imgQr from './images/alipay.png'
 import classNames from 'classnames'
 import tabs from './tabs'
 import {connect} from 'react-redux'
+import {notification} from 'antd'
 
 export default class Charge extends React.Component {
     constructor(props) {
