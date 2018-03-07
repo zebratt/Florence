@@ -145,7 +145,7 @@ class Register extends Component {
             })
     }
 
-    onChangeHandler(eve) {
+    onChangeHandler = (eve) => {
         switch (eve.target.className) {
             case 'phone':
                 this.setState({
@@ -185,13 +185,13 @@ class Register extends Component {
                             <div className="title">注册</div>
                             <div className="form">
                                 <div className="item">
-                                    <input className="phone" type="text" value={phone} maxLength={11} placeholder="请输入手机号" onChange={::this.onChangeHandler} />
+                                    <input className="phone" type="text" value={phone} maxLength={11} placeholder="请输入手机号" onChange={this.onChangeHandler} />
                                 </div>
                                 <div className="item">
-                                    <input className="password" type="password" maxLength={16} placeholder="请输入密码，长度不小于6位" onChange={::this.onChangeHandler} />
+                                    <input className="password" type="password" maxLength={16} placeholder="请输入密码，长度不小于6位" onChange={this.onChangeHandler} />
                                 </div>
                                 <div className="item">
-                                    <input className="password-confirm" type="password" maxLength={16} placeholder="请再次输入密码" onChange={::this.onChangeHandler} />
+                                    <input className="password-confirm" type="password" maxLength={16} placeholder="请再次输入密码" onChange={this.onChangeHandler} />
                                 </div>
                                 <div className="item verify">
                                     <div className="left">
