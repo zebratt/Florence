@@ -1,0 +1,21 @@
+.news{
+    color: #333;
+
+    .block-title{
+        font-size: 20px;
+        line-height: 40px;
+    }
+
+    .list{
+        margin-top: 10px;
+
+        .item{
+            padding: 2px 0;
+            
+            .title{
+                font-size: 17px;
+                padding: 5px 20px;
+            }
+        }
+    }
+}

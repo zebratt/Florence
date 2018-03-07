@@ -14,6 +14,7 @@
         top: 114px;
         left: 50%;
         margin-left: -500px;
+        z-index: 100;
 
         .content {
             width: 254px;
@@ -82,10 +83,68 @@
         }
     }
 
-    .propaganda{
+    .propaganda {
         width: 1000px;
-        margin: 10px auto;
+        margin: 20px auto;
+        padding-bottom: 20px;
         border-bottom: #e5e5e5 solid 1px;
         display: flex;
+
+        .item {
+            position: relative;
+            flex: 1;
+
+            .title {
+                font-size: 20px;
+                padding-bottom: 4px;
+                color: #333;
+            }
+
+            .text {
+                font-size: 15px;
+                color: #888;
+            }
+        }
+
+        .logo {
+            position: absolute;
+            right: 15px;
+            top: 0;
+            background-image: url(http://odl96infd.bkt.clouddn.com/home-sprite.png);
+        }
+
+        .logo-1 {
+            width: 73px;
+            height: 78px;
+            background-position: -196px -0px;
+        }
+
+        .logo-2 {
+            width: 72px;
+            height: 68px;
+            background-position: -140px -98px;
+        }
+
+        .logo-3 {
+            width: 73px;
+            height: 71px;
+            background-position: -65px -98px;
+        }
+
+        .logo-4 {
+            width: 63px;
+            height: 73px;
+            background-position: -0px -98px;
+        }
+    }
+
+    .news-panel{
+        width: 1000px;
+        margin: 0 auto;
+        display: flex;
+
+        .news{
+            flex: 1;
+        }
     }
 }

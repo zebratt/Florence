@@ -10,11 +10,18 @@ import { bindActionCreators } from 'redux'
 import actions from './action'
 import { URL_LOGIN } from '../../utils/urls'
 import Cookies from 'js-cookie'
+import News from './News/News'
 
 class Home extends Component {
     state = {
         username: '',
         password: ''
+    }
+
+    componentDidMount(){
+        const {getNews} = this.props;
+
+        getNews()
     }
 
     onLoginHandler = () => {
@@ -102,7 +109,7 @@ class Home extends Component {
 
     render() {
         const { username, password } = this.state
-        const { loginStatus, history } = this.props
+        const { loginStatus, history, news } = this.props
 
         return (
             <div className="g-page" id="Home">
@@ -124,10 +131,34 @@ class Home extends Component {
                 </Carousel>
                 {!loginStatus && this.renderLogin()}
                 <div className="propaganda">
-                    <div className="item"></div>
-                    <div className="item"></div>
-                    <div className="item"></div>
-                    <div className="item"></div>
+                    <div className="item">
+                        <div className="title">资金保障</div>
+                        <div className="text">资金托管银行</div>
+                        <div className="text">封闭管理专款专用</div>
+                        <div className="logo logo-1"></div>
+                    </div>
+                    <div className="item">
+                        <div className="title">交易安全</div>
+                        <div className="text">券商监管</div>
+                        <div className="text">保障您的交易安全</div>
+                        <div className="logo logo-2"></div>
+                    </div>
+                    <div className="item">
+                        <div className="title">专业风控</div>
+                        <div className="text">多级风控管理</div>
+                        <div className="text">降低投资风险</div>
+                        <div className="logo logo-3"></div>
+                    </div>
+                    <div className="item">
+                        <div className="title">全新模式</div>
+                        <div className="text">全新微交易</div>
+                        <div className="text">简单易懂资讯在手</div>
+                        <div className="logo logo-4"></div>
+                    </div>
+                </div>
+                <div className="news-panel">
+                    <News title={'新闻资讯'} news={news} />
+                    <News title={'最新公告'} news={[]} />
                 </div>
             </div>
         )
@@ -137,7 +168,7 @@ class Home extends Component {
 const mapStateToProps = state => {
     const { Home } = state
 
-    return { loginStatus: Home.loginStatus }
+    return { loginStatus: Home.loginStatus, news: Home.news }
 }
 
 const mapDispatchToProps = dispatch => {

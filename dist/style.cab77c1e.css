@@ -3655,7 +3655,8 @@ html, body {
     position: absolute;
     top: 114px;
     left: 50%;
-    margin-left: -500px; }
+    margin-left: -500px;
+    z-index: 100; }
     #Home .login .content {
       width: 254px;
       height: 290px;
@@ -3706,6 +3707,49 @@ html, body {
         line-height: 36px;
         border: 0;
         cursor: pointer; }
+  #Home .propaganda {
+    width: 1000px;
+    margin: 20px auto;
+    padding-bottom: 20px;
+    border-bottom: #e5e5e5 solid 1px;
+    display: flex; }
+    #Home .propaganda .item {
+      position: relative;
+      flex: 1; }
+      #Home .propaganda .item .title {
+        font-size: 20px;
+        padding-bottom: 4px;
+        color: #333; }
+      #Home .propaganda .item .text {
+        font-size: 15px;
+        color: #888; }
+    #Home .propaganda .logo {
+      position: absolute;
+      right: 15px;
+      top: 0;
+      background-image: url(http://odl96infd.bkt.clouddn.com/home-sprite.png); }
+    #Home .propaganda .logo-1 {
+      width: 73px;
+      height: 78px;
+      background-position: -196px -0px; }
+    #Home .propaganda .logo-2 {
+      width: 72px;
+      height: 68px;
+      background-position: -140px -98px; }
+    #Home .propaganda .logo-3 {
+      width: 73px;
+      height: 71px;
+      background-position: -65px -98px; }
+    #Home .propaganda .logo-4 {
+      width: 63px;
+      height: 73px;
+      background-position: -0px -98px; }
+  #Home .news-panel {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex; }
+    #Home .news-panel .news {
+      flex: 1; }
 #NavBar {
   background: #fff;
   border-bottom: #e5e5e5 solid 1px; }
@@ -3746,6 +3790,18 @@ html, body {
         margin: 0 8px; }
         #Header .content .right a:visited {
           color: #555; }
+.news {
+  color: #333; }
+  .news .block-title {
+    font-size: 20px;
+    line-height: 40px; }
+  .news .list {
+    margin-top: 10px; }
+    .news .list .item {
+      padding: 2px 0; }
+      .news .list .item .title {
+        font-size: 17px;
+        padding: 5px 20px; }
 html, body {
   background: #FAFAFA; }
 
