@@ -160,6 +160,37 @@ class Home extends Component {
                     <News title={'新闻资讯'} news={news} />
                     <News title={'最新公告'} news={[]} />
                 </div>
+                <div className="company">
+                    <div className="title">合作伙伴</div>
+                    <div className="line">
+                        <div className="item">
+                            <img src="http://odl96infd.bkt.clouddn.com/001.png" alt=""/>
+                        </div>
+                        <div className="item">
+                            <img src="http://odl96infd.bkt.clouddn.com/002.png" alt=""/>
+                        </div>
+                        <div className="item">
+                            <img src="http://odl96infd.bkt.clouddn.com/003.png" alt=""/>
+                        </div>
+                        <div className="item">
+                            <img src="http://odl96infd.bkt.clouddn.com/004.png" alt=""/>
+                        </div>
+                    </div>
+                    <div className="line">
+                        <div className="item">
+                            <img src="http://odl96infd.bkt.clouddn.com/005.png" alt=""/>
+                        </div>
+                        <div className="item">
+                            <img src="http://odl96infd.bkt.clouddn.com/006.png" alt=""/>
+                        </div>
+                        <div className="item">
+                            <img src="http://odl96infd.bkt.clouddn.com/007.png" alt=""/>
+                        </div>
+                        <div className="item">
+                            <img src="http://odl96infd.bkt.clouddn.com/008.png" alt=""/>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

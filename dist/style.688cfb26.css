@@ -3647,7 +3647,8 @@ html, body {
   background: #FAFAFA; }
 
 #Home {
-  position: relative; }
+  position: relative;
+  background: #fff; }
   #Home .banner {
     width: 100%; }
   #Home .login {
@@ -3747,9 +3748,29 @@ html, body {
   #Home .news-panel {
     width: 1000px;
     margin: 0 auto;
-    display: flex; }
+    display: flex;
+    padding-bottom: 20px;
+    border-bottom: #e5e5e5; }
     #Home .news-panel .news {
       flex: 1; }
+  #Home .company {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0; }
+    #Home .company .title {
+      color: #333;
+      font-size: 20px;
+      line-height: 40px; }
+    #Home .company .line {
+      width: 80%;
+      margin: 20px auto; }
+      #Home .company .line .item {
+        display: inline-block;
+        width: 25%;
+        text-align: center; }
+        #Home .company .line .item img {
+          display: inline-block;
+          max-width: 80%; }
 #NavBar {
   background: #fff;
   border-bottom: #e5e5e5 solid 1px; }
