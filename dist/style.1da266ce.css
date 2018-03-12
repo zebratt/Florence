@@ -3821,6 +3821,8 @@ html, body {
     margin-top: 10px; }
     .news .list .item {
       padding: 2px 0; }
+      .news .list .item a {
+        color: #636384; }
       .news .list .item .title {
         font-size: 17px;
         padding: 5px 20px; }
@@ -3844,6 +3846,18 @@ html, body {
           padding: 6px;
           border-right: #e5e5e5 solid 1px;
           border-bottom: #e5e5e5 solid 1px; }
+.footer {
+  margin-top: 100px;
+  background: #4C4B48; }
+  .footer .content {
+    width: 1000px;
+    padding: 30px 0;
+    margin: 0 auto;
+    color: #bebebd; }
+    .footer .content p {
+      line-height: 40px; }
+      .footer .content p .right {
+        float: right; }
 html, body {
   background: #FAFAFA; }
 

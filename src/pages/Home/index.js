@@ -12,6 +12,7 @@ import { URL_LOGIN } from '../../utils/urls'
 import Cookies from 'js-cookie'
 import News from './News/News'
 import Compare from './Compare/Compare'
+import Footer from '../../components/Footer/Footer'
 
 class Home extends Component {
     state = {
@@ -197,6 +198,7 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }
