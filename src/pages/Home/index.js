@@ -11,6 +11,7 @@ import actions from './action'
 import { URL_LOGIN } from '../../utils/urls'
 import Cookies from 'js-cookie'
 import News from './News/News'
+import Compare from './Compare/Compare'
 
 class Home extends Component {
     state = {
@@ -57,6 +58,10 @@ class Home extends Component {
                     })
                 }
             })
+    }
+
+    gotoLink = (link) => {
+        location.href = link
     }
 
     renderLogin = () => {
@@ -156,23 +161,24 @@ class Home extends Component {
                         <div className="logo logo-4"></div>
                     </div>
                 </div>
+                <Compare />
                 <div className="news-panel">
                     <News title={'新闻资讯'} news={news} />
                     <News title={'最新公告'} news={[]} />
                 </div>
                 <div className="company">
-                    <div className="title">合作伙伴</div>
+                    <div className="title">友情链接</div>
                     <div className="line">
-                        <div className="item">
+                        <div className="item" onClick={() => {this.gotoLink('http://www.byxgj.com/')}}>
                             <img src="http://odl96infd.bkt.clouddn.com/001.png" alt=""/>
                         </div>
-                        <div className="item">
+                        <div className="item" onClick={() => {this.gotoLink('http://www.caijing.com.cn/')}}>
                             <img src="http://odl96infd.bkt.clouddn.com/002.png" alt=""/>
                         </div>
-                        <div className="item">
+                        <div className="item" onClick={() => {this.gotoLink('http://www.eastmoney.com/')}}>
                             <img src="http://odl96infd.bkt.clouddn.com/003.png" alt=""/>
                         </div>
-                        <div className="item">
+                        <div className="item" onClick={() => {this.gotoLink('http://finance.ifeng.com/')}}>
                             <img src="http://odl96infd.bkt.clouddn.com/004.png" alt=""/>
                         </div>
                     </div>
@@ -180,13 +186,13 @@ class Home extends Component {
                         <div className="item">
                             <img src="http://odl96infd.bkt.clouddn.com/005.png" alt=""/>
                         </div>
-                        <div className="item">
+                        <div className="item" onClick={() => {this.gotoLink('http://finance.sina.com.cn/')}}>
                             <img src="http://odl96infd.bkt.clouddn.com/006.png" alt=""/>
                         </div>
-                        <div className="item">
+                        <div className="item" onClick={() => {this.gotoLink('https://wallstreetcn.com/')}}>
                             <img src="http://odl96infd.bkt.clouddn.com/007.png" alt=""/>
                         </div>
-                        <div className="item">
+                        <div className="item" onClick={() => {this.gotoLink('http://www.cmegroup.com/cn-t/')}}>
                             <img src="http://odl96infd.bkt.clouddn.com/008.png" alt=""/>
                         </div>
                     </div>

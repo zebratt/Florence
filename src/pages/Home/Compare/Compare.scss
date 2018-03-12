@@ -1,0 +1,37 @@
+$commonBorder : #e5e5e5 solid 1px;
+
+.Compare{
+    width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0;
+
+    .title{
+        font-size: 20px;
+        color: #333;
+    }
+
+    .content{
+        display: flex;
+
+        .box{
+            padding: 10px;
+            flex: 1;
+
+            .table{
+                width: 100%;
+                border : {
+                    top: $commonBorder;
+                    left: $commonBorder;
+                }
+
+                td{
+                    padding: 6px;
+                    border : {
+                        right: $commonBorder;
+                        bottom: $commonBorder;
+                    }
+                }
+            }
+        }
+    }
+}

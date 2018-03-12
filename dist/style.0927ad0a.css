@@ -3756,7 +3756,8 @@ html, body {
   #Home .company {
     width: 1000px;
     margin: 0 auto;
-    padding: 20px 0; }
+    padding: 20px 0;
+    cursor: pointer; }
     #Home .company .title {
       color: #333;
       font-size: 20px;
@@ -3823,6 +3824,26 @@ html, body {
       .news .list .item .title {
         font-size: 17px;
         padding: 5px 20px; }
+.Compare {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0; }
+  .Compare .title {
+    font-size: 20px;
+    color: #333; }
+  .Compare .content {
+    display: flex; }
+    .Compare .content .box {
+      padding: 10px;
+      flex: 1; }
+      .Compare .content .box .table {
+        width: 100%;
+        border-top: #e5e5e5 solid 1px;
+        border-left: #e5e5e5 solid 1px; }
+        .Compare .content .box .table td {
+          padding: 6px;
+          border-right: #e5e5e5 solid 1px;
+          border-bottom: #e5e5e5 solid 1px; }
 html, body {
   background: #FAFAFA; }
 
