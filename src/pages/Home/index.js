@@ -13,6 +13,14 @@ import Cookies from 'js-cookie'
 import News from './News/News'
 import Compare from './Compare/Compare'
 import Footer from '../../components/Footer/Footer'
+import Tip from './Tip/Tip'
+
+const tips = [
+    {
+        title: '关于原油期货上市交易有关事项的通知',
+        url: 'http://www.ine.cn/news/notice/911319799.html?from=timeline&isappinstalled=0'
+    }
+]
 
 class Home extends Component {
     state = {
@@ -130,12 +138,11 @@ class Home extends Component {
                     interval={3000}
                     showStatus={false}
                 >
-                    <img className="banner" src="http://odl96infd.bkt.clouddn.com/11.jpg" alt="" />
                     <img className="banner" src="http://odl96infd.bkt.clouddn.com/22.jpg" alt="" />
                     <img className="banner" src="http://odl96infd.bkt.clouddn.com/33.jpg" alt="" />
-                    <img className="banner" src="http://odl96infd.bkt.clouddn.com/44.jpg" alt="" />
                 </Carousel>
                 {!loginStatus && this.renderLogin()}
+                <Tip />
                 <div className="propaganda">
                     <div className="item">
                         <div className="title">资金保障</div>
@@ -165,7 +172,7 @@ class Home extends Component {
                 <Compare />
                 <div className="news-panel">
                     <News title={'新闻资讯'} news={news} />
-                    <News title={'最新公告'} news={[]} />
+                    <News title={'最新公告'} news={tips} />
                 </div>
                 <div className="company">
                     <div className="title">友情链接</div>
@@ -184,13 +191,13 @@ class Home extends Component {
                         </div>
                     </div>
                     <div className="line">
-                        <div className="item">
+                        <div className="item" onClick={() => {this.gotoLink('https://wallstreetcn.com/')}}>
                             <img src="http://odl96infd.bkt.clouddn.com/005.png" alt=""/>
                         </div>
                         <div className="item" onClick={() => {this.gotoLink('http://finance.sina.com.cn/')}}>
                             <img src="http://odl96infd.bkt.clouddn.com/006.png" alt=""/>
                         </div>
-                        <div className="item" onClick={() => {this.gotoLink('https://wallstreetcn.com/')}}>
+                        <div className="item" onClick={() => {this.gotoLink('http://finance.sina.com.cn/')}}>
                             <img src="http://odl96infd.bkt.clouddn.com/007.png" alt=""/>
                         </div>
                         <div className="item" onClick={() => {this.gotoLink('http://www.cmegroup.com/cn-t/')}}>
