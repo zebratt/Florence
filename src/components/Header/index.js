@@ -6,7 +6,7 @@
 
 import './style.scss';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import actions from 'pages/Home/action';
@@ -57,4 +57,4 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(actions, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

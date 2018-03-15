@@ -1,7 +1,7 @@
 import './News.scss'
 import React from 'react'
 
-export default ({ news, title }) => {
+export default ({ news = [], title }) => {
     return (
         <div className="news">
             <div className="block-title">{title}</div>
