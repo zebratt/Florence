@@ -17,6 +17,7 @@ import Withdraw from './modules/Withdraw'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 import tabs from './tabs'
+import Footer from 'components/Footer/Footer'
 
 class PersonalCenter extends Component {
     constructor(props) {
@@ -91,6 +92,7 @@ class PersonalCenter extends Component {
                     </div>
                     {tabContent}
                 </div>
+                <Footer />
             </div>
         )
     }

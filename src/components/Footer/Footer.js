@@ -1,9 +1,11 @@
 import './Footer.scss'
 import React from 'react'
 
-export default () => {
+export default (props) => {
+    const classes = 'footer ' + (props.cls ? props.cls : '');
+
     return (
-        <div className="footer">
+        <div className={classes} >
             <div className="content">
                 <p>浙江省温州市鹿城区万源路新城农贸大楼第二层208室东首</p>
                 <p>

@@ -9,6 +9,7 @@ import NavBar from '../../components/NavBar/index';
 import classNames from 'classnames';
 import { notification } from 'antd';
 import { URL_SEND_VERITY_CODE, URL_CHECK_CODE, URL_MODIFY_PASSWORD } from '../../utils/urls';
+import Footer from 'components/Footer/Footer'
 
 const steps = ['手机获取验证码', '验证码校验', '修改新密码'];
 
@@ -249,6 +250,7 @@ class ForgetPassword extends Component {
                     </ul>
                     {stepContent}
                 </div>
+                <Footer />
             </div>
         );
     }

@@ -2,6 +2,7 @@ import './style.scss'
 import * as React from 'react'
 import Header from 'components/Header'
 import NavBar from 'components/NavBar'
+import Footer from 'components/Footer/Footer'
 
 export default () => {
     return (
@@ -33,6 +34,7 @@ export default () => {
                     </button>
                 </div>
             </div>
+            <Footer cls="download-footer" />
         </div>
     )
 }

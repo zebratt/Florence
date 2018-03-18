@@ -7,6 +7,7 @@ import { notification } from 'antd'
 import classNames from 'classnames'
 import VCode from '../../utils/VCode'
 import { getQueryString } from '../../utils/utils'
+import Footer from 'components/Footer/Footer'
 
 class Register extends Component {
     state = {
@@ -236,6 +237,7 @@ class Register extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }

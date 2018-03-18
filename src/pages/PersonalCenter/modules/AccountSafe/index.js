@@ -24,7 +24,7 @@ class AccountSafe extends Component {
     };
     render() {
         const { cwpCustomers, hasRealName, idCard, name } = this.props;
-        const phone = _get(cwpCustomers, 'customerName');
+        const phone = _get(cwpCustomers, 'customerPhone');
         const realNameClasses = classNames({
             checked: true,
             green: hasRealName

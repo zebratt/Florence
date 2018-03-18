@@ -5696,3 +5696,6 @@ textarea.ant-input {
     border: #e5e5e5 solid 1px;
     border-radius: 3px;
     cursor: pointer; }
+
+#Download .download-footer {
+  margin-top: 300px; }
