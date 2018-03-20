@@ -39,7 +39,7 @@ class Withdraw extends React.Component {
                     });
                 } else {
                     notification.success({
-                        message: '提现成功！'
+                        message: '已提交申请，待处理'
                     });
                     this.props.history.goBack();
                 }
