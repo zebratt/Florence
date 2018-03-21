@@ -14,6 +14,7 @@ import News from './News/News'
 import Compare from './Compare/Compare'
 import Footer from '../../components/Footer/Footer'
 import Tip from './Tip/Tip'
+import { withRouter } from 'react-router-dom'
 
 const tips = [
     {
@@ -28,10 +29,11 @@ class Home extends Component {
         password: ''
     }
 
-    componentDidMount(){
-        const {getNews} = this.props;
+    componentDidMount() {
+        const { getNews, getNotice } = this.props
 
         getNews()
+        getNotice()
     }
 
     onLoginHandler = () => {
@@ -69,7 +71,7 @@ class Home extends Component {
             })
     }
 
-    gotoLink = (link) => {
+    gotoLink = link => {
         location.href = link
     }
 
@@ -123,7 +125,7 @@ class Home extends Component {
 
     render() {
         const { username, password } = this.state
-        const { loginStatus, history, news } = this.props
+        const { loginStatus, history, news, notices } = this.props
 
         return (
             <div className="g-page" id="Home">
@@ -148,60 +150,106 @@ class Home extends Component {
                         <div className="title">资金保障</div>
                         <div className="text">资金托管银行</div>
                         <div className="text">封闭管理专款专用</div>
-                        <div className="logo logo-1"></div>
+                        <div className="logo logo-1" />
                     </div>
                     <div className="item">
                         <div className="title">交易安全</div>
                         <div className="text">券商监管</div>
                         <div className="text">保障您的交易安全</div>
-                        <div className="logo logo-2"></div>
+                        <div className="logo logo-2" />
                     </div>
                     <div className="item">
                         <div className="title">专业风控</div>
                         <div className="text">多级风控管理</div>
                         <div className="text">降低投资风险</div>
-                        <div className="logo logo-3"></div>
+                        <div className="logo logo-3" />
                     </div>
                     <div className="item">
                         <div className="title">全新模式</div>
                         <div className="text">全新微交易</div>
                         <div className="text">简单易懂资讯在手</div>
-                        <div className="logo logo-4"></div>
+                        <div className="logo logo-4" />
                     </div>
                 </div>
                 <Compare />
                 <div className="news-panel">
-                    <News title={'新闻资讯'} news={news} />
-                    <News title={'最新公告'} news={tips} />
+                    <News title={'新闻资讯'} news={news} isOutLink />
+                    <News
+                        title={'最新公告'}
+                        news={notices}
+                        clickHandler={url => {
+                            this.props.history.push(url)
+                        }}
+                    />
                 </div>
                 <div className="company">
                     <div className="title">友情链接</div>
                     <div className="line">
-                        <div className="item" onClick={() => {this.gotoLink('http://www.byxgj.com/')}}>
-                            <img src="http://odl96infd.bkt.clouddn.com/001.png" alt=""/>
+                        <div
+                            className="item"
+                            onClick={() => {
+                                this.gotoLink('http://www.byxgj.com/')
+                            }}
+                        >
+                            <img src="http://odl96infd.bkt.clouddn.com/001.png" alt="" />
                         </div>
-                        <div className="item" onClick={() => {this.gotoLink('http://www.caijing.com.cn/')}}>
-                            <img src="http://odl96infd.bkt.clouddn.com/002.png" alt=""/>
+                        <div
+                            className="item"
+                            onClick={() => {
+                                this.gotoLink('http://www.caijing.com.cn/')
+                            }}
+                        >
+                            <img src="http://odl96infd.bkt.clouddn.com/002.png" alt="" />
                         </div>
-                        <div className="item" onClick={() => {this.gotoLink('http://www.eastmoney.com/')}}>
-                            <img src="http://odl96infd.bkt.clouddn.com/003.png" alt=""/>
+                        <div
+                            className="item"
+                            onClick={() => {
+                                this.gotoLink('http://www.eastmoney.com/')
+                            }}
+                        >
+                            <img src="http://odl96infd.bkt.clouddn.com/003.png" alt="" />
                         </div>
-                        <div className="item" onClick={() => {this.gotoLink('http://finance.ifeng.com/')}}>
-                            <img src="http://odl96infd.bkt.clouddn.com/004.png" alt=""/>
+                        <div
+                            className="item"
+                            onClick={() => {
+                                this.gotoLink('http://finance.ifeng.com/')
+                            }}
+                        >
+                            <img src="http://odl96infd.bkt.clouddn.com/004.png" alt="" />
                         </div>
                     </div>
                     <div className="line">
-                        <div className="item" onClick={() => {this.gotoLink('https://wallstreetcn.com/')}}>
-                            <img src="http://odl96infd.bkt.clouddn.com/005.png" alt=""/>
+                        <div
+                            className="item"
+                            onClick={() => {
+                                this.gotoLink('https://wallstreetcn.com/')
+                            }}
+                        >
+                            <img src="http://odl96infd.bkt.clouddn.com/005.png" alt="" />
                         </div>
-                        <div className="item" onClick={() => {this.gotoLink('http://finance.sina.com.cn/')}}>
-                            <img src="http://odl96infd.bkt.clouddn.com/006.png" alt=""/>
+                        <div
+                            className="item"
+                            onClick={() => {
+                                this.gotoLink('http://finance.sina.com.cn/')
+                            }}
+                        >
+                            <img src="http://odl96infd.bkt.clouddn.com/006.png" alt="" />
                         </div>
-                        <div className="item" onClick={() => {this.gotoLink('http://finance.sina.com.cn/')}}>
-                            <img src="http://odl96infd.bkt.clouddn.com/007.png" alt=""/>
+                        <div
+                            className="item"
+                            onClick={() => {
+                                this.gotoLink('http://finance.sina.com.cn/')
+                            }}
+                        >
+                            <img src="http://odl96infd.bkt.clouddn.com/007.png" alt="" />
                         </div>
-                        <div className="item" onClick={() => {this.gotoLink('http://www.cmegroup.com/cn-t/')}}>
-                            <img src="http://odl96infd.bkt.clouddn.com/008.png" alt=""/>
+                        <div
+                            className="item"
+                            onClick={() => {
+                                this.gotoLink('http://www.cmegroup.com/cn-t/')
+                            }}
+                        >
+                            <img src="http://odl96infd.bkt.clouddn.com/008.png" alt="" />
                         </div>
                     </div>
                 </div>
@@ -214,11 +262,11 @@ class Home extends Component {
 const mapStateToProps = state => {
     const { Home } = state
 
-    return { loginStatus: Home.loginStatus, news: Home.news }
+    return Home
 }
 
 const mapDispatchToProps = dispatch => {
     return bindActionCreators(actions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home))

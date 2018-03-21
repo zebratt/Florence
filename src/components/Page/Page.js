@@ -1,3 +1,4 @@
+import './Page.scss'
 import React from 'react'
 import Header from '../Header'
 import Footer from '../Footer/Footer'
@@ -9,10 +10,12 @@ class Page extends React.Component {
         const classes = 'm-page ' + (namespace ? namespace : '')
 
         return (
-            <div class={namespace}>
+            <div className="g-page">
                 <Header />
                 <NavBar />
-                {this.props.children}
+                <div className={classes}>
+                    {this.props.children}
+                </div>
                 <Footer />
             </div>
         )

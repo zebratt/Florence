@@ -24,11 +24,6 @@ class NavBar extends Component {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink isActive={this.isActive} to="/notice">
-                                <span>新闻公告</span>
-                            </NavLink>
-                        </li>
-                        <li>
                             <NavLink isActive={this.isActive} to="/download">
                                 <span>软件下载</span>
                             </NavLink>

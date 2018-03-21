@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { UPDATE_LOGIN, QUERY_CUSTOMER_BY_TOKEN, GET_NEWS } from './contants'
+import { UPDATE_LOGIN, QUERY_CUSTOMER_BY_TOKEN, GET_NEWS, GET_NOTICE } from './contants'
 import _cloneDeep from 'lodash/cloneDeep'
 
 const initState = {
@@ -7,7 +7,8 @@ const initState = {
     token: '',
     customerId: '',
     cwpCustomers: {},
-    news: []
+    news: [],
+    notices: []
 }
 
 const reducer = handleActions(
@@ -32,6 +33,15 @@ const reducer = handleActions(
             const nState = _cloneDeep(state)
 
             nState.news = action.payload
+
+            return nState
+        },
+        [GET_NOTICE]: (state, action) => {
+            const nState = _cloneDeep(state)
+
+            nState.notices = action.payload.map((item) => {
+                return Object.assign(item, {url: `/notice/${item.id}`})
+            })
 
             return nState
         }

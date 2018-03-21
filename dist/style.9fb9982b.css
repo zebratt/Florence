@@ -3822,7 +3822,7 @@ html, body {
     .news .list .item {
       padding: 2px 0; }
       .news .list .item a {
-        color: #636384; }
+        color: #5f79af; }
       .news .list .item .title {
         font-size: 17px;
         padding: 5px 20px; }
@@ -5699,3 +5699,17 @@ textarea.ant-input {
 
 #Download .download-footer {
   margin-top: 300px; }
+.page-notice {
+  padding-top: 30px;
+  padding-bottom: 200px; }
+  .page-notice .title {
+    font-size: 26px;
+    text-align: center;
+    line-height: 70px; }
+  .page-notice .content {
+    margin-top: 15px;
+    font-size: 18px;
+    line-height: 1.5; }
+.g-page .m-page {
+  width: 1000px;
+  margin: 0 auto; }
