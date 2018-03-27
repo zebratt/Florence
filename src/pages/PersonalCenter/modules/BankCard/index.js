@@ -12,7 +12,7 @@ import actions from './action'
 import { Route } from 'react-router-dom'
 import AddCard from './Add'
 
-const auditStatus = ['', '待审核', '审核通过', '审核失败']
+const auditStatus = ['待审核', '审核通过', '审核失败']
 
 class BankCard extends Component {
     componentDidMount() {

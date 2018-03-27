@@ -5607,6 +5607,16 @@ textarea.ant-input {
   font-size: 16px;
   padding-bottom: 8px; }
 
+#Withdraw .btn-add {
+  margin-top: 20px;
+  padding: 6px 20px;
+  color: #fff;
+  background-color: #ce2629;
+  font-size: 13px;
+  border: 0;
+  cursor: pointer;
+  border-radius: 5px; }
+
 #Withdraw .line {
   margin: 10px 0; }
   #Withdraw .line .label {
