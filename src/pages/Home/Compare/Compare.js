@@ -3,7 +3,7 @@ import React from 'react'
 
 export default () => (
     <div className="Compare">
-        <div className="title">国内原油期货合约草案与欧美合约对比</div>
+        <div className="title">国内原油期货合约与欧美合约对比</div>
         <div className="content">
             <div className="box">
                 <table className="table">
