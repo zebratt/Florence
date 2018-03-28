@@ -225,9 +225,9 @@ class Register extends Component {
                                             })
                                         }}
                                     />
-                                    <span>我已阅兵并同意</span>
-                                    <a href="http://www.dyb98.com/user/RegAgree" target="_blank">
-                                        《系统服务协议》
+                                    <span>我已阅读并同意</span>
+                                    <a href="/fwxy.html" target="_blank">
+                                        《用户服务协议》
                                     </a>
                                 </div>
                                 <button className="btn-next" onClick={this.onNextHandler}>

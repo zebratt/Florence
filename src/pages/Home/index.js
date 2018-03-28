@@ -230,7 +230,7 @@ class Home extends Component {
                         <div
                             className="item"
                             onClick={() => {
-                                this.gotoLink('http://finance.sina.com.cn/')
+                                this.gotoLink('http://www.ine.cn/')
                             }}
                         >
                             <img src="http://odl96infd.bkt.clouddn.com/006.png" alt="" />

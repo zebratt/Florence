@@ -3824,8 +3824,14 @@ html, body {
       .news .list .item a {
         color: #5f79af; }
       .news .list .item .title {
+        cursor: pointer;
+        color: #5f79af;
         font-size: 17px;
         padding: 5px 20px; }
+        .news .list .item .title .create-time {
+          float: right;
+          font-size: 13px;
+          color: #888; }
 .Compare {
   width: 1000px;
   margin: 0 auto;
@@ -3861,11 +3867,11 @@ html, body {
 .Tip {
   background: #ece7e7; }
   .Tip .content {
-    color: #159edc;
+    color: #f30;
     width: 1000px;
     margin: 0 auto;
     line-height: 34px;
-    font-size: 15px;
+    font-size: 16px;
     display: block; }
 html, body {
   background: #FAFAFA; }
@@ -5696,6 +5702,7 @@ textarea.ant-input {
     font-size: 16px;
     color: #fff; }
   #Download .main .name {
+    vertical-align: top;
     display: inline-block;
     margin: 0 20px;
     font-size: 14px;

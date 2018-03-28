@@ -3,6 +3,6 @@ import './Tip.scss'
 
 export default () => (
     <div className="Tip">
-        <a className="content" href="http://www.ine.cn/news/notice/911319799.html?from=timeline&isappinstalled=0" target="_blank">关于原油期货上市交易有关事项的通知</a>
+        <a className="content" href="/yygz.html" target="_blank">交易前必读：原油期货鑫管家风控规则及相关事项</a>
     </div>
 )

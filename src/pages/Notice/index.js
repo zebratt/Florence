@@ -24,7 +24,7 @@ class Notice extends React.Component {
 
         return <Page namespace="page-notice">
             <div className="title">{notice.title}</div>
-            <div className="content">{notice.content}</div>
+            <div className="content" dangerouslySetInnerHTML={{__html: notice.content}} />
         </Page>
     }
 }

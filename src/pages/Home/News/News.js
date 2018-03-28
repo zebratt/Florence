@@ -7,6 +7,8 @@ export default ({ news = [], title, isOutLink, clickHandler }) => {
             <div className="block-title">{title}</div>
             <ul className="list">
                 {news.map((item, idx) => {
+                    const createTime = item.createTime ? new Date(item.createTime).toLocaleString() : ''
+
                     return (
                         <li key={idx} className="item">
                             {isOutLink && (
@@ -15,7 +17,7 @@ export default ({ news = [], title, isOutLink, clickHandler }) => {
                                 </a>
                             )}
                             {!isOutLink && (
-                                <a
+                                <div
                                     className="title"
                                     onClick={(eve) => {
                                         eve.preventDefault()
@@ -23,7 +25,8 @@ export default ({ news = [], title, isOutLink, clickHandler }) => {
                                     }}
                                 >
                                     {item.title}
-                                </a>
+                                    <span className="create-time">{createTime}</span>
+                                </div>
                             )}
                         </li>
                     )

@@ -17,8 +17,16 @@
             }
             
             .title{
+                cursor: pointer;
+                color: #5f79af;
                 font-size: 17px;
                 padding: 5px 20px;
+
+                .create-time{
+                    float: right;
+                    font-size: 13px;
+                    color: #888;
+                }
             }
         }
     }

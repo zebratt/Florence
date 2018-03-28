@@ -3,6 +3,7 @@ import * as React from 'react'
 import Header from 'components/Header'
 import NavBar from 'components/NavBar'
 import Footer from 'components/Footer/Footer'
+import imgQR from './images/qr.png'
 
 export default () => {
     return (
@@ -32,6 +33,10 @@ export default () => {
                     >
                         点击下载
                     </button>
+                </div>
+                <div className="line">
+                    <div className="name">手机APP下载</div>
+                    <img src={imgQR} />
                 </div>
             </div>
             <Footer cls="download-footer" />
