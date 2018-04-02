@@ -17,7 +17,7 @@ export default () => {
                     <button
                         className="btn"
                         onClick={() => {
-                            location.href = 'http://www.byxgj.com/uploads/soft/KP/澎博鑫管家云平台-博易大师.exe'
+                            location.href = 'http://www.qlyzg.com/upload/麒麟博易大师.exe'
                         }}
                     >
                         点击下载
@@ -28,7 +28,7 @@ export default () => {
                     <button
                         className="btn"
                         onClick={() => {
-                            location.href = 'http://www.byxgj.com/uploads/soft/KP/澎博鑫管家云平台-闪电王.exe'
+                            location.href = 'http://www.qlyzg.com/upload/麒麟闪电王.exe'
                         }}
                     >
                         点击下载

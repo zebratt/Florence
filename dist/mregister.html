@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html lang="zh-CN">
+
+	<head>
+		<title>起点注册</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	</head>
+
+	<body>
+
+		<style type="text/css">
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				font: normal 100% Helvetica, Arial, sans-serif;
+				font-weight: 350;
+			}
+			
+			.logo {
+				padding-top: 50px;
+				width: 100%;
+				height: 70px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			
+			.logo img {
+				/*width: 70px;
+				height: 70px;*/
+				display: block;
+				border: none;
+			}
+			
+			.wrapper {
+				width: 80%;
+				margin: 50px auto;
+			}
+			
+			.wrapper div {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 20px 0;
+				height: 40px;
+			}
+			
+			.wrapper input {
+				width: 100%;
+				outline: none;
+				border: none;
+				/*border-bottom: solid 1px #ccc;*/
+				font-size: 14px;
+				height: 38px;
+				line-height: 30px;
+				background-color: transparent;
+				FILTER: alpha(opacity=0);
+				/*androd*/
+				appearance: none;
+				/*下拉框去掉右侧图标*/
+				-moz-appearance: none;
+				-webkit-appearance: none;
+			}
+			
+			.wrapper div:last-child input {
+				width: 60%;
+			}
+			
+			.wrapper div .code {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				/*border: solid 1px black;*/
+				/*border-radius: 3px;*/
+				width: 40%;
+				height: 40px;
+				font-size: 14px;
+				line-height: 30px;
+				text-align: center;
+				/*border-bottom: solid 1px #ccc;*/
+				color: rgb(153, 153, 153);
+			}
+			
+			.wrapper div .code:active {
+				background: #eee;
+			}
+			
+			.wrapper .twodiv {
+				border-bottom: solid 1px #ccc;
+				width: 100%;
+				height: 45px;
+			}
+			
+			.login {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 80%;
+				margin: 40px auto;
+				height: 40px;
+				background: rgb(205, 80, 67);
+				border-radius: 3px;
+				color: white;
+			}
+			
+			.toast {
+				display: none;
+				position: fixed;
+				width: 80%;
+				height: 30px;
+				line-height: 30px;
+				background: rgba(0, 0, 0, 0.6);
+				color: white;
+				border-radius: 3px;
+				top: 350px;
+				margin: 0 10%;
+				text-align: center;
+				font-weight: 350;
+			}
+			
+			.thirdName {
+				width: 80%;
+				height: 40px;
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			.thirdName .line {
+				width: 100%;
+				height: 20px;
+				border-bottom: 1px solid rgb(230, 230, 230);
+			}
+			
+			.thirdName .titlename {
+				width: 120px;
+				font-size: 16px;
+				text-align: center;
+				color: rgb( 153, 153, 153);
+				background: #fff;
+				position: absolute;
+				top: 9px;
+				left: 50%;
+				margin-left: -60px;
+			}
+			
+			.thirdLogin {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 20px 0;
+			}
+			
+			.thirdLogin img {
+				display: block;
+				border: 0;
+				width: 50px;
+				height: 50px;
+			}
+			
+			.thirdLogin .name {
+				text-align: center;
+				color: rgb( 153, 153, 153);
+				font-size: 14px;
+			}
+			
+			.thirdLogin #wx_login {
+				margin-left: 100px;
+			}
+		</style>
+
+		<div class="logo">
+			<img />
+		</div>
+
+		<div class="wrapper">
+			<div class="twodiv">
+				<input type="number" oninput="if(value.length>11) value=value.slice(0,11)" placeholder="请填写注册手机号码" id="phone">
+			</div>
+			<div class="twodiv">
+				<input type="password" placeholder="请输入密码，长度不小于6位数" id="mimaone">
+			</div>
+			<div class="twodiv">
+				<input type="password" placeholder="请再次输入密码" id="mimatwo">
+			</div>
+			<div class="twodiv">
+				<input class="twoinput" type="text" placeholder="请输入验证码" id="code">
+				<div class="code" id="getcode">获取验证码</div>
+			</div>
+		</div>
+		<div class="login" id="login">注册</div>
+		<div class="toast" id="toast"></div>
+
+		<script src="./jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+			function getUrlParam(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+				var r = window.location.search.substr(1).match(reg); //匹配目标参数
+				if(r != null) return unescape(r[2]);
+				return null; //返回参数值
+			};
+			var agentId = getUrlParam(agentId);
+//			var agentId = 28;
+
+			var can_send = true;
+			var time = 60;
+
+			function isempty(str) {
+				if(!str || str == '') {
+					return true;
+				}
+				return false;
+			};
+
+			function get_wait() {
+				time--;
+				if(time <= 0) {
+					time = 60;
+					can_send = true;
+					$("#getcode").css("color", "rgb(235,78,69)");
+					$("#getcode").text("获取验证码");
+					return;
+				}
+				$("#getcode").text("重新发送(" + time + "s)");
+				setTimeout(get_wait, 1000);
+			}
+
+			function sendsms() {
+				var phone = $("#phone").val();
+				var mimaone = $("#mimaone").val();
+				var mimatwo = $("#mimatwo").val();
+				if(!phone || phone.length != 11 || !(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(phone))) {
+					can_send = true;
+					show_toast('请输入正确的手机号');
+					return;
+				};
+				if(isempty(mimaone)) {
+					show_toast('请输入密码！');
+					return;
+				}
+				if(isempty(mimatwo)) {
+					show_toast('请再次输入密码！');
+					return;
+				}
+				if(mimaone.length < 6) {
+					show_toast('请输入密码长度在6位以上！');
+					return;
+				}
+				if(mimaone != mimatwo) {
+					show_toast('两次密码输入不一致！');
+					return;
+				}
+				$.ajax({
+					type: "post",
+					url: "/serverInterface/login/sendCode",
+					async: true,
+					data: {
+						mobile: phone,
+						type: 1
+					},
+					success: function(data) {
+						console.log(data)
+						//						var obj = JSON.parse(data);
+						if(data.code == 1) {
+							show_toast("短信发送成功");
+							can_send = false;
+							$("#getcode").css('color', 'gray');
+							get_wait();
+						} else {
+							can_send = true;
+							show_toast(data.msg);
+						}
+					},
+					error: function() {
+						alert('请求验证码接口出错！！！');
+					}
+				});
+			}
+
+			function login() {
+				var phone = $("#phone").val();
+				var mimaone = $("#mimaone").val();
+				var mimatwo = $("#mimatwo").val();
+				if(!phone || phone.length != 11 || !(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(phone))) {
+					show_toast('请输入正确的手机号');
+					return;
+				}
+				if(isempty(mimaone)) {
+					show_toast('请输入密码！');
+					return;
+				}
+				if(isempty(mimatwo)) {
+					show_toast('请再次输入密码！');
+					return;
+				}
+				if(mimaone.length < 6) {
+					show_toast('请输入密码长度在6位以上！');
+					return;
+				}
+				if(mimaone != mimatwo) {
+					show_toast('两次密码输入不一致！');
+					return;
+				}
+				var code = $("#code").val();
+				if(!code || code.length != 6) {
+					show_toast('请输入正确的验证码');
+					return;
+				}
+				
+				$.ajax({
+					type: "post",
+					url: "/serverInterface/login/registrationCustomer",
+					async: true,
+					data: {
+						customerPassword: mimaone,
+						customerPhone: phone,
+						code: code,
+						agentId: agentId,
+					},
+					success: function(data) {
+						console.log(data)
+						if(data.code == 1) {
+							show_toast("注册成功！！！");
+						} else {
+							show_toast(data.msg);
+						}
+					},
+					error: function() {
+						alert('请求注册接口出错！！！');
+					}
+				});
+			}
+
+			function show_toast(tip) {
+				$("#toast").html(tip);
+				$("#toast").css("display", "block");
+				setTimeout(function() {
+					$("#toast").css("display", "none")
+				}, 2000);
+			}
+			$(document).ready(function() {
+				$("#getcode").click(function() {
+					if(!can_send) {
+						return;
+					}
+					can_send = false;
+					sendsms();
+				})
+				$("#login").click(function() {
+					login();
+				});
+			});
+		</script>
+	</body>
+
+</html>
