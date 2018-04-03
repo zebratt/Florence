@@ -2,7 +2,7 @@ import './style.scss'
 import * as React from 'react'
 import { Route } from 'react-router-dom'
 import imgLogo from './images/jsyh.png'
-import imgQr from './images/alipay.png'
+import imgQr from './images/alipay.jpg'
 import classNames from 'classnames'
 import tabs from './tabs'
 import { connect } from 'react-redux'
@@ -47,6 +47,7 @@ export default class Charge extends React.Component {
                     })}
                 </ul>
                 <Route exact path="/personal/charge/bankcard" component={Bankcard} />
+                <Route exact path="/personal/charge/alipay" component={Alipay} />
                 <Route
                     exact
                     path="/personal/charge/online"
@@ -59,6 +60,23 @@ export default class Charge extends React.Component {
             </div>
         )
     }
+}
+
+const Alipay = () => {
+    return (
+        <div className="alipay">
+            <div className="qr-code">
+                <img src={imgQr} alt="" />
+            </div>
+            <div className="line red">
+                请扫码充值，并务必在转账备注中填写注册手机号，这样方便我们多重信息确认您的汇款。
+            </div>
+            <div className="line">转账时间为9：00---23：00期间的，正常情况下10分钟内到账.若在其他时间段转账的，客服将在9：00上班后处理。</div>
+            <div className="line">（转账过程如未备注注册手机号，请及时联系客服，此期间所造成的延时到账情况由客户本人承担）</div>
+            <div className="line">账号：1342159848@qq.com</div>
+            <div className="line">户名：温州起点科技有限公司</div>
+        </div>
+    )
 }
 
 const Bankcard = () => {

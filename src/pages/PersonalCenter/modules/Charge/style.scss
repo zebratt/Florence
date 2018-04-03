@@ -27,6 +27,11 @@
         .qr-code{
             display: block;
             margin: 20px auto;
+
+            img{
+                width: 200px;
+                height: 200px;
+            }
         }
 
         .line{
