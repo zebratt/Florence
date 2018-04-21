@@ -5626,6 +5626,9 @@ textarea.ant-input {
   cursor: pointer;
   border-radius: 5px; }
 
+#Withdraw .tip {
+  margin-left: 15px; }
+
 #Withdraw .line {
   margin: 10px 0; }
   #Withdraw .line .label {

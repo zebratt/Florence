@@ -88,6 +88,7 @@ class Withdraw extends React.Component {
                             })
                         }}
                     />
+                    <span className="tip">每笔提款收取2元手续费</span>
                 </div>
                 <div className="line">
                     <div className="label">提现银行卡号：</div>
