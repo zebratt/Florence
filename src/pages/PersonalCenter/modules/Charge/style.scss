@@ -23,51 +23,51 @@
         }
     }
 
-    .alipay{
-        .qr-code{
+    .alipay {
+        .qr-code {
             display: block;
             margin: 20px auto;
 
-            img{
+            img {
                 width: 200px;
                 height: 200px;
             }
         }
 
-        .line{
+        .line {
             margin: 10px 0;
         }
-        
-        .red{
+
+        .red {
             color: #d22e34;
         }
     }
 
-    .bankcard{
+    .bankcard {
         padding: 20px 0;
 
-        .bold{
+        .bold {
             font-size: 14px;
             font-weight: bold;
         }
 
-        .line{
+        .line {
             margin: 10px 0;
         }
 
-        .charge-table{
+        .charge-table {
             width: 100%;
             margin-top: 20px;
             border-top: #e5e5e5 solid 1px;
             border-left: #e5e5e5 solid 1px;
 
-            .logo{
+            .logo {
                 position: absolute;
                 width: 150px;
                 height: 50px;
             }
 
-            td{
+            td {
                 border-right: #e5e5e5 solid 1px;
                 border-bottom: #e5e5e5 solid 1px;
                 padding: 12px;
@@ -75,24 +75,58 @@
         }
     }
 
-    .online{
+    .online {
         padding: 20px;
         font-size: 14px;
 
-        .charge-input{
-            border: #e5e5e5 solid 1px;
-            margin-left: 10px;
-            height: 30px;
-            padding: 0 5px;
+        .banks {
+            .title {
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .box {
+                overflow: hidden;
+
+                img {
+                    width: 75%;
+                    vertical-align: middle;
+                    margin-left: 5px;
+                }
+
+                .bank {
+                    float: left;
+                    width: 25%;
+                    height: 60px;
+            padding-left: 5px;
+                }
+            }
         }
 
-        .btn-confirm{
-            margin-left: 10px;
-            background: #d22e34;
-            color: #fff;
-            padding: 4px 8px;
-            border-radius: 3px;
-            cursor: pointer;
+        .tip{
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .amount {
+            margin-top: 20px;
+
+            .charge-input {
+                border: #e5e5e5 solid 1px;
+                margin-left: 10px;
+                height: 30px;
+                padding: 0 5px;
+            }
+
+            .btn-confirm {
+                margin-left: 10px;
+                background: #d22e34;
+                color: #fff;
+                padding: 4px 8px;
+                border-radius: 3px;
+                cursor: pointer;
+            }
         }
     }
 }

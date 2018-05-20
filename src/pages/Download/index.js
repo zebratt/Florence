@@ -39,7 +39,7 @@ export default () => {
                     <img src={imgQR} />
                 </div>
             </div>
-            <Footer cls="download-footer" />
+            <Footer />
         </div>
     )
 }

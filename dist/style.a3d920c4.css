@@ -3853,7 +3853,6 @@ html, body {
           border-right: #e5e5e5 solid 1px;
           border-bottom: #e5e5e5 solid 1px; }
 .footer {
-  margin-top: 100px;
   background: #4C4B48; }
   .footer .content {
     width: 1000px;
@@ -3960,7 +3959,8 @@ html, body {
   width: 1000px;
   margin: 40px auto;
   border: 1px solid #e5e5e5;
-  background: #F4F0F0; }
+  background: #F4F0F0;
+  min-height: calc(100vh - 275px); }
   #PersonalCenter .main .menu {
     min-width: 200px;
     height: 600px; }
@@ -5598,18 +5598,38 @@ textarea.ant-input {
 #Charge .online {
   padding: 20px;
   font-size: 14px; }
-  #Charge .online .charge-input {
-    border: #e5e5e5 solid 1px;
-    margin-left: 10px;
-    height: 30px;
-    padding: 0 5px; }
-  #Charge .online .btn-confirm {
-    margin-left: 10px;
-    background: #d22e34;
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 3px;
-    cursor: pointer; }
+  #Charge .online .banks .title {
+    font-size: 24px;
+    font-weight: bold; }
+  #Charge .online .banks .box {
+    overflow: hidden; }
+    #Charge .online .banks .box img {
+      width: 75%;
+      vertical-align: middle;
+      margin-left: 5px; }
+    #Charge .online .banks .box .bank {
+      float: left;
+      width: 25%;
+      height: 60px;
+      padding-left: 5px; }
+  #Charge .online .tip {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 12px; }
+  #Charge .online .amount {
+    margin-top: 20px; }
+    #Charge .online .amount .charge-input {
+      border: #e5e5e5 solid 1px;
+      margin-left: 10px;
+      height: 30px;
+      padding: 0 5px; }
+    #Charge .online .amount .btn-confirm {
+      margin-left: 10px;
+      background: #d22e34;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 3px;
+      cursor: pointer; }
 #Withdraw .withdraw-title {
   line-height: 25px;
   border-bottom: #bbb solid 1px;
@@ -5652,7 +5672,8 @@ textarea.ant-input {
   margin: 40px auto;
   border-radius: 2px;
   border: 1px solid #dcdcdc;
-  background: #fff; }
+  background: #fff;
+  min-height: calc(100vh - 275px); }
   #ForgetPassword .main .title {
     line-height: 50px;
     padding-left: 15px;
@@ -5701,7 +5722,8 @@ textarea.ant-input {
   width: 1000px;
   margin: 40px auto;
   border: 1px solid #e5e5e5;
-  background: #fff; }
+  background: #fff;
+  min-height: calc(100vh - 275px); }
   #Download .main .title {
     background: #ce2629;
     padding: 10px 20px;
@@ -5735,4 +5757,5 @@ textarea.ant-input {
     line-height: 1.5; }
 .g-page .m-page {
   width: 1000px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  min-height: calc(100vh - 195px); }

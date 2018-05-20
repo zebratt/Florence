@@ -19,9 +19,9 @@ class Withdraw extends React.Component {
         const { moneyVal } = this.state
         const { customerId, token, bankcards } = this.props
 
-        if (!/^[0-9]+([.]{1}[0-9]{1,3})?$/.test(moneyVal)) {
+        if (!/^[0-9]+([.]{1}[0-9]{1,3})?$/.test(moneyVal) && moneyVal > 50000) {
             return notification.warning({
-                message: '提现金额格式有误，请重新输入！'
+                message: '提现金额有误，请重新输入！'
             })
         }
 
@@ -88,7 +88,7 @@ class Withdraw extends React.Component {
                             })
                         }}
                     />
-                    <span className="tip">每笔提款收取2元手续费</span>
+                    <span className="tip">每笔提款收取2元手续费, 每笔限额5W</span>
                 </div>
                 <div className="line">
                     <div className="label">提现银行卡号：</div>
