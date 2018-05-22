@@ -28,8 +28,23 @@ class Online extends React.Component {
             })
         }
 
-        const params = [`amount=${amountVal}`, `customerId=${customerId}`, `bankCard=${currentBankCode}`]
-        location.href = 'http://payfor.chundongh.cn/serverInterface/payment/placeOrder?' + params.join('&')
+        axios
+            .post('/serverInterface/payment/verification', {
+                amount: amountVal,
+                customerId,
+                bankCard: currentBankCode
+            })
+            .then(res => {
+                if (res.code == 1) {
+                    const params = [`amount=${amountVal}`, `customerId=${customerId}`, `bankCard=${currentBankCode}`]
+
+                    window.open('http://payfor.chundongh.cn/serverInterface/payment/placeOrder?' + params.join('&'))
+                } else {
+                    notification.error({
+                        message: res.msg
+                    })
+                }
+            })
     }
     onImgClick = id => {
         this.setState({
