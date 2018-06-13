@@ -13,7 +13,7 @@ export default () => {
             <div className="main">
                 <div className="title">软件下载</div>
                 <div className="line">
-                    <div className="name">博澎博鑫管家-博易大师</div>
+                    <div className="name">澎博鑫管家-博易大师</div>
                     <button
                         className="btn"
                         onClick={() => {
