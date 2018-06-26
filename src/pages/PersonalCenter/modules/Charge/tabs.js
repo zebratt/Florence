@@ -7,8 +7,8 @@ export default [
         name: '支付宝转账',
         key: 'alipay'
     },
-    {
-        name: '在线充值',
-        key: 'online'
-    }
+    // {
+    //     name: '在线充值',
+    //     key: 'online'
+    // }
 ]
