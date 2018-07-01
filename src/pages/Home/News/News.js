@@ -7,8 +7,7 @@ export default ({ news = [], title, isOutLink, clickHandler }) => {
             <div className="block-title">{title}</div>
             <ul className="list">
                 {news.map((item, idx) => {
-                    const createTime = item.createTime ? new Date(item.createTime).toLocaleString() : ''
-
+                    // const createTime = item.createTime ? new Date(item.createTime).toLocaleString() : ''
                     return (
                         <li key={idx} className="item">
                             {isOutLink && (
@@ -25,7 +24,7 @@ export default ({ news = [], title, isOutLink, clickHandler }) => {
                                     }}
                                 >
                                     {item.title}
-                                    <span className="create-time">{createTime}</span>
+                                    <span className="create-time">{item.createTime}</span>
                                 </div>
                             )}
                         </li>
