@@ -83,10 +83,6 @@ class Register extends Component {
             return
         }
 
-        this.setState({
-            isSubmiting: true
-        })
-
         if (!checkStatus) {
             return notification.warning({
                 message: '请先阅读并同意协议！'
@@ -122,6 +118,10 @@ class Register extends Component {
                 message: '验证码格式有误！'
             })
         }
+        
+        this.setState({
+            isSubmiting: true
+        })
 
         axios
             .post(URL_REGISTER_NEW, {
