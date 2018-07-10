@@ -5758,3 +5758,90 @@ textarea.ant-input {
   width: 1000px;
   margin: 0 auto;
   min-height: calc(100vh - 195px); }
+html, body {
+  background: #FAFAFA; }
+
+.g-page {
+  background: #FAFAFA; }
+
+#Register .rg-footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0; }
+
+#Register .main {
+  background: url("http://www.dyb98.com/i/niucelue/reg-banner.jpg") no-repeat center;
+  height: 450px;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 50px; }
+  #Register .main .content {
+    position: relative;
+    width: 1000px;
+    margin: 0 auto; }
+    #Register .main .content .register-box {
+      position: absolute;
+      background: #fff;
+      width: 340px;
+      right: 0; }
+      #Register .main .content .register-box .title {
+        background-color: #f7f7f7;
+        font-size: 16px;
+        color: #f96515;
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #eee;
+        font-weight: normal;
+        text-align: center; }
+      #Register .main .content .register-box .form {
+        padding: 20px 30px; }
+        #Register .main .content .register-box .form .item {
+          padding: 0 0 15px; }
+          #Register .main .content .register-box .form .item input {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #eee;
+            background-color: #fff;
+            padding: 11px 9px;
+            height: 40px;
+            line-height: 21px;
+            color: #444444; }
+        #Register .main .content .register-box .form .verify {
+          display: flex; }
+          #Register .main .content .register-box .form .verify .left {
+            flex: 1; }
+          #Register .main .content .register-box .form .verify .right {
+            box-sizing: border-box;
+            width: 50%;
+            text-align: right; }
+            #Register .main .content .register-box .form .verify .right .btn-verify {
+              background: #d42b2e;
+              color: #fff;
+              border: 0;
+              width: 80%;
+              font-size: 13px;
+              cursor: pointer;
+              border-radius: 0;
+              height: 100%; }
+            #Register .main .content .register-box .form .verify .right .disabled {
+              background: #888; }
+        #Register .main .content .register-box .form .agree {
+          font-size: 12px;
+          color: #999; }
+          #Register .main .content .register-box .form .agree span {
+            margin-left: 6px; }
+          #Register .main .content .register-box .form .agree .checkbox {
+            -webkit-appearance: checkbox;
+            cursor: pointer; }
+        #Register .main .content .register-box .form .btn-next {
+          line-height: 36px;
+          display: block;
+          letter-spacing: 5px;
+          background: #d42b2e;
+          color: #fff;
+          border: 0;
+          width: 100%;
+          margin-top: 20px;
+          font-size: 16px;
+          cursor: pointer; }

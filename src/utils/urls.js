@@ -1,5 +1,6 @@
 export const URL_LOGIN = '/serverInterface/login/loginCheck'; // 用户登录
 export const URL_REGISTER = '/serverInterface/login/registrationCustomer' //用户注册
+export const URL_REGISTER_NEW = '/serverInterface/login/registrationByUserName' //用户注册新
 export const URL_SEND_VERITY_CODE = '/serverInterface/login/sendCode' //发送验证码
 export const URL_QUERY_CUSTOMER_BY_TOKEN = '/serverInterface/login/queryCustomerByToken' //使用token查询用户信息
 export const URL_CHECK_CODE = '/serverInterface/login/checkCode' //修改密码验证码校验

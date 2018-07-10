@@ -18,6 +18,7 @@ import Personal from 'pages/PersonalCenter'
 import ForgetPassword from 'pages/ForgetPassword'
 import Download from 'pages/Download'
 import Notice from 'pages/Notice'
+import RegisterNew from 'pages/RegisterNew'
 
 // Global variables
 import { init } from 'utils/global'
@@ -43,6 +44,7 @@ class App extends Component {
                     <Route path="/personal/:tab" component={Personal} />
                     <Route exact path="/forget" component={ForgetPassword} />
                     <Route exact path="/download" component={Download} />
+                    <Route exact path="/registernew" component={RegisterNew} />
                 </div>
             </Router>
         )
