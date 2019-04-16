@@ -9,7 +9,7 @@
         "dev": "webpack-dev-server --config webpack.dev.js",
         "start": "npm run dev",
         "icon": "node icons/index.js",
-        "push": "scp -r dist/. xuxuejian@116.62.130.69:/usr/local/nginx/html"
+        "publish": "scp -P 26939 -r dist/. xuxuejian@144.34.186.85:/usr/local/nginx/html"
     },
     "dependencies": {
         "antd": "^2.13.7",
