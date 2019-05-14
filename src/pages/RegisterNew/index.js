@@ -6,7 +6,7 @@ import { URL_REGISTER_NEW, URL_SEND_VERITY_CODE } from '../../utils/urls'
 import { notification } from 'antd'
 import classNames from 'classnames'
 import VCode from '../../utils/VCode'
-import { getQueryString } from '../../utils/utils'
+import { getQueryString, getQueryStringNew } from '../../utils/utils'
 import Footer from 'components/Footer/Footer'
 
 class Register extends Component {
@@ -113,11 +113,11 @@ class Register extends Component {
             })
         }
 
-        if (!/\d{6}/.test(verifyCodeVal)) {
-            return notification.warning({
-                message: '验证码格式有误！'
-            })
-        }
+        // if (!/\d{6}/.test(verifyCodeVal)) {
+        //     return notification.warning({
+        //         message: '验证码格式有误！'
+        //     })
+        // }
         
         this.setState({
             isSubmiting: true
@@ -127,7 +127,8 @@ class Register extends Component {
             .post(URL_REGISTER_NEW, {
                 phone: phone,
                 password: password,
-                code: verifyCodeVal,
+                // code: verifyCodeVal,
+                code: '',
                 userName: broker
             })
             .then(res => {
@@ -206,7 +207,7 @@ class Register extends Component {
                                 <div className="item">
                                     <input className="broker" value={broker} type="text" placeholder="请输入经纪商代码" onChange={this.onChangeHandler} />
                                 </div>
-                                <div className="item verify">
+                                {/* <div className="item verify">
                                     <div className="left">
                                         <input
                                             type="text"
@@ -225,7 +226,7 @@ class Register extends Component {
                                             {verifyText}
                                         </button>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="agree">
                                     <input
                                         className="checkbox"

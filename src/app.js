@@ -3,7 +3,7 @@ import 'styles/main.scss'
 
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { HashRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import actions from './pages/Home/action'
 import Cookies from 'js-cookie'

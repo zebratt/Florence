@@ -15,3 +15,10 @@ export function getQueryString(name) {
   if (r != null) return unescape(r[2]);
   return null;
 }
+
+export function getQueryStringNew(name){
+  const reg = new RegExp(`${name}=(.+)`)
+  const res = location.hash.match(reg)
+
+  return res[1]
+}
