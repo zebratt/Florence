@@ -6,7 +6,7 @@ import { URL_REGISTER, URL_SEND_VERITY_CODE } from '../../utils/urls'
 import { notification } from 'antd'
 import classNames from 'classnames'
 import VCode from '../../utils/VCode'
-import { getQueryString } from '../../utils/utils'
+import { getQueryString, getQueryStringNew } from '../../utils/utils'
 import Footer from 'components/Footer/Footer'
 
 class Register extends Component {
@@ -110,19 +110,19 @@ class Register extends Component {
             })
         }
 
-        if (!/\d{6}/.test(verifyCodeVal)) {
-            return notification.warning({
-                message: '验证码格式有误！'
-            })
-        }
+        // if (!/\d{6}/.test(verifyCodeVal)) {
+        //     return notification.warning({
+        //         message: '验证码格式有误！'
+        //     })
+        // }
 
-        const agentId = getQueryString('agentId')
+        const agentId = getQueryStringNew('agentId')
 
         axios
             .post(URL_REGISTER, {
                 customerPhone: phone,
                 customerPassword: password,
-                code: verifyCodeVal,
+                code: '',
                 agentId: agentId
             })
             .then(res => {
@@ -194,7 +194,7 @@ class Register extends Component {
                                 <div className="item">
                                     <input className="password-confirm" type="password" maxLength={16} placeholder="请再次输入密码" onChange={this.onChangeHandler} />
                                 </div>
-                                <div className="item verify">
+                                {/* <div className="item verify">
                                     <div className="left">
                                         <input
                                             type="text"
@@ -213,7 +213,7 @@ class Register extends Component {
                                             {verifyText}
                                         </button>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="agree">
                                     <input
                                         className="checkbox"

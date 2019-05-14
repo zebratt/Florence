@@ -20,5 +20,5 @@ export function getQueryStringNew(name){
   const reg = new RegExp(`${name}=(.+)`)
   const res = location.hash.match(reg)
 
-  return res[1]
+  return res ? res[1] : null
 }
