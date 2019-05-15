@@ -140,8 +140,8 @@ class Home extends Component {
                     interval={3000}
                     showStatus={false}
                 >
-                    <img className="banner" src="http://odl96infd.bkt.clouddn.com/22.jpg" alt="" />
-                    <img className="banner" src="http://odl96infd.bkt.clouddn.com/33.jpg" alt="" />
+                    <img className="banner" src="//ww1.sinaimg.cn/large/ad85cd77gy1g32dcjb60qj20rg08m43n.jpg" alt="" />
+                    <img className="banner" src="//ww1.sinaimg.cn/large/ad85cd77gy1g32df8d0x8j20ra0aye1b.jpg" alt="" />
                 </Carousel>
                 {!loginStatus && this.renderLogin()}
                 <Tip />
