@@ -131,7 +131,7 @@ class Home extends Component {
             <div className="g-page" id="Home">
                 <Header />
                 <NavBar />
-                <Carousel
+                {/* <Carousel
                     emulateTouch
                     showArrows={true}
                     showThumbs={false}
@@ -142,7 +142,7 @@ class Home extends Component {
                 >
                     <img className="banner" src="//ww1.sinaimg.cn/large/ad85cd77gy1g32dcjb60qj20rg08m43n.jpg" alt="" />
                     <img className="banner" src="//ww1.sinaimg.cn/large/ad85cd77gy1g32df8d0x8j20ra0aye1b.jpg" alt="" />
-                </Carousel>
+                </Carousel> */}
                 {!loginStatus && this.renderLogin()}
                 <Tip />
                 <div className="propaganda">
