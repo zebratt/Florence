@@ -20,7 +20,10 @@ module.exports = merge(common, {
     port: 9999,
     stats: 'minimal',
     noInfo: false,
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/serverInterface': 'http://144.34.186.85'
+    }
   },
   plugins: [
     new DashboardPlugin(),
