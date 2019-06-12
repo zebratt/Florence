@@ -121,15 +121,8 @@ class MyHome extends Component {
                 <div className="top">
                     <div className="flex-1">
                         <div className="balance">
-                            <p>账户余额</p>
-                            <p className="red">{fundBalance}</p>
-                        </div>
-                    </div>
-                    <div className="flex-1">
-                        <div className="fund">
-                            <p>盘中权益资金</p>
-                            <p className="tip">(请以终端或刷新后的数据为准)</p>
-                            <p className="red">{balance}</p>
+                            <p>当前权益：</p>
+                            <p className="red">{fundBalance}&nbsp; USD</p>
                         </div>
                     </div>
                     <div className="flex-1">
@@ -142,27 +135,6 @@ class MyHome extends Component {
                             刷新
                         </button>
                     </div>
-                    <div className="flex-1">
-                        <button className="btn btn-withdraw" onClick={this.onSettleHandler}>
-                            结算
-                        </button>
-                    </div>
-                </div>
-                <div className="deposit">
-                    <span className="label">投入盘中资金：</span>
-                    <input
-                        className="input"
-                        type="text"
-                        value={this.state.depositVal}
-                        onChange={eve => {
-                            this.setState({
-                                depositVal: eve.target.value
-                            })
-                        }}
-                    />
-                    <button className="btn-confirm" onClick={this.onDepositConfirmHandler}>
-                        确认
-                    </button>
                 </div>
                 <div className="title">资金明细</div>
                 <table className="table">

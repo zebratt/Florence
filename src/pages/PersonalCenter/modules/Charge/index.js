@@ -1,109 +1,196 @@
 import './style.scss'
 import * as React from 'react'
-import { Route } from 'react-router-dom'
-import imgLogo from './images/jsyh.png'
-import imgQr from './images/alipay.jpg'
-import classNames from 'classnames'
-import tabs from './tabs'
 import { connect } from 'react-redux'
-import { notification } from 'antd'
-import Online from './Online/Online'
+import { bindActionCreators } from 'redux'
+import { Form, Input, Button, message, Modal, Row, Col } from 'antd'
+import actions from '../AccountSafe/action'
+import qs from 'query-string'
 
-export default class Charge extends React.Component {
+class Charge extends React.Component {
     constructor(props) {
         super(props)
-
         this.state = {
-            currTab: props.match.params.tab || 'bankcard'
+            dollar: 0,
+            visible: false,
+            amount: 0,
+            remark: ''
         }
     }
-    tabClick = key => {
-        this.setState({
-            currTab: key
+    componentDidMount() {
+        const { getRealNameStatus, customerId } = this.props
+        getRealNameStatus(customerId)
+    }
+    onSubmit = () => {
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if (!err) {
+                this.setState({
+                    visible: true,
+                    ...values
+                })
+            }
         })
+    }
+    onAmountChange = eve => {
+        this.setState({
+            dollar: eve.target.value * 7.5
+        })
+    }
+    onOk = () => {
+        const { customerId } = this.props
+        fetch(
+            `/serverInterface/payment/recharge?${qs.stringify({
+                customerId,
+                amount: this.state.amount,
+                remark: this.state.remark
+            })}`
+        )
+            .then(res => res.json())
+            .then(res => {
+                if (res.code == 1) {
+                    message.success('提交入金成功！')
+                    this.props.form.resetFields()
 
-        this.props.history.push(key)
+                    this.setState({
+                        visible: false
+                    })
+                } else {
+                    message.error(res.msg)
+                }
+            })
     }
     render() {
+        const {
+            name,
+            cwpCustomers: { customerName }
+        } = this.props
+        const { getFieldDecorator } = this.props.form
+
         return (
             <div id="Charge">
                 <div className="charge-title">账户充值</div>
-                <ul className="nav">
-                    {tabs.map(tab => {
-                        const classes = classNames({
-                            active: tab.key === this.state.currTab
+                <div style={{ padding: 30 }}>
+                    <Form inline>
+                        <div className="row">
+                            <Form.Item label="真实姓名">{name}</Form.Item>
+                        </div>
+                        <div className="row">
+                            <Form.Item label="交易账户">{customerName}</Form.Item>
+                        </div>
+                        <div className="row">
+                            <Form.Item label="充值金额">
+                                {getFieldDecorator('amount', {
+                                    rules: [
+                                        {
+                                            required: true,
+                                            message: '金额不能为空'
+                                        }
+                                    ]
+                                })(<Input type="number" onChange={this.onAmountChange} />)}
+                            </Form.Item>
+                            汇率：<span className="red">7.5</span>&nbsp; 手续费：<span className="red">0</span>&nbsp;
+                            美元：<span className="red">{this.state.dollar}</span>&nbsp;
+                        </div>
+                        <div className="row">
+                            <Form.Item label="转账信息">
+                                {getFieldDecorator('remark', {
+                                    rules: [
+                                        {
+                                            required: true,
+                                            message: '转账信息不能为空'
+                                        }
+                                    ]
+                                })(<Input />)}
+                            </Form.Item>
+                            <span className="red">银联转账为转账人的姓名、支付宝为支付宝昵称</span>
+                        </div>
+                        <div className="row">
+                            <Button type="dashed" onClick={this.onSubmit}>
+                                提交入金
+                            </Button>
+                        </div>
+                    </Form>
+                    <div className="tips">
+                        <p className="red">
+                            业务说明：代充值业务是将人民币转账到制定账户并备注系统显示的附言。客服人员审核后充值到信管家账户。
+                        </p>
+                        <br />
+                        <p className="red">
+                            到账时间：转账完成以后，客服人员收到订单对账无误后进行入金。若长时间未到账请联系客服人员，请大家尽量使用微信或支付宝，用以节省到账时间。
+                        </p>
+                        <br />
+                        <p className="red">
+                            补充说明：支付时请务必填写页面显示附言，若没有填写则会导致入金无法到账。请及时联系客服人员。
+                        </p>
+                    </div>
+                </div>
+                <Modal
+                    visible={this.state.visible}
+                    onOk={this.onOk}
+                    onCancel={() => {
+                        this.setState({
+                            visible: false
                         })
-
-                        return (
-                            <li
-                                key={tab.key}
-                                className={classes}
-                                onClick={() => {
-                                    this.tabClick(tab.key)
-                                }}
-                            >
-                                {tab.name}
-                            </li>
-                        )
-                    })}
-                </ul>
-                <Route exact path="/personal/charge/bankcard" component={Bankcard} />
-                <Route exact path="/personal/charge/alipay" component={Alipay} />
-                <Route
-                    exact
-                    path="/personal/charge/online"
-                    component={connect(state => {
-                        const { Home } = state
-
-                        return Object.assign({}, Home)
-                    })(Online)}
-                />
+                    }}
+                    okText="支付成功"
+                    cancelText="失败"
+                    centered
+                >
+                    <Row>
+                        <Col span={6}>
+                            <h2>交易账户：</h2>
+                        </Col>
+                        <Col span={6}>
+                            <span className="red">{customerName}</span>
+                        </Col>
+                        <Col span={6}>
+                            <h2>姓名：</h2>
+                        </Col>
+                        <Col span={6}>
+                            <span className="red">{name}</span>
+                        </Col>
+                    </Row>
+                    <br />
+                    <br />
+                    <br />
+                    <Row>
+                        <Col span={6}>
+                            <h2>入金人民币：</h2>
+                        </Col>
+                        <Col span={6}>
+                            <span className="red">{this.state.amount}</span>
+                        </Col>
+                        <Col span={6}>
+                            <h2>转账信息:</h2>
+                        </Col>
+                        <Col span={6}>
+                            <span className="red">{this.state.remark}</span>
+                        </Col>
+                    </Row>
+                    <div style={{marginTop: 20}}>
+                        <p className="red">请确认以上转账信息是否正确，如果正确请将金额转账至下方银行账户：</p>
+                        <br />
+                        <p className="red">银行卡号：6228480339483599777</p>
+                        <p className="red">开户银行：中国农业银行温州江南支行</p>
+                        <p className="red">开户姓名：张庭庭</p>
+                    </div>
+                </Modal>
             </div>
         )
     }
 }
+const mapStateToProps = state => {
+    const { Safe, Home } = state
 
-const Alipay = () => {
-    return (
-        <div className="alipay">
-            <div className="qr-code">
-                <img src={imgQr} alt="" />
-            </div>
-            <div className="line red">
-                请扫码充值，并务必在转账备注中填写注册手机号，这样方便我们多重信息确认您的汇款。
-            </div>
-            <div className="line">转账时间为9：00---23：00期间的，正常情况下10分钟内到账.若在其他时间段转账的，客服将在9：00上班后处理。</div>
-            <div className="line">（转账过程如未备注注册手机号，请及时联系客服，此期间所造成的延时到账情况由客户本人承担）</div>
-            <div className="line">账号：1342159848@qq.com</div>
-            <div className="line">户名：温州起点科技有限公司</div>
-        </div>
-    )
+    return Object.assign({}, Safe, Home)
 }
 
-const Bankcard = () => {
-    return (
-        <div className="bankcard">
-            <div className="bold">您可以通过网上银行、银行柜台或ATM机转账</div>
-            <div className="line">请务必在转账备注中填写注册手机号，这样方便我们多重信息确认您的汇款。</div>
-            <div className="line">转账成功后，请及时联系您的专属客户经理， 以便我们及时帮您处理</div>
-            <table className="charge-table">
-                <tbody>
-                    <tr>
-                        <td width="25%">
-                            <img className="logo" src={imgLogo} alt="" />
-                        </td>
-                        <td>
-                            <p>帐号：33050162870400000196</p>
-                            <p>户名：温州起点科技有限公司</p>
-                            <p>开户行：温州黎明支行</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div className="line">
-                注意：用户网银转账之后，请务必保留网银转账成功时的截图，并在资金或者转账用途中备注清自己要转入帐号所用的注册手机号码，并及时联系专属客户经理，以便尽快到账！
-            </div>
-            <div className="line">8：30——15：00充值入金，正常到账时间为30分钟之内</div>
-        </div>
-    )
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators(actions, dispatch)
 }
+
+export default Form.create()(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Charge)
+)

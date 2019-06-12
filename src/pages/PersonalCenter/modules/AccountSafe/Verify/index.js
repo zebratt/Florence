@@ -27,28 +27,32 @@ class Verify extends React.Component {
             })
         }
 
+        if (files.length < 3) {
+            return notification.warning({
+                message: '请上传全部照片！'
+            })
+        }
+
         const fd = new FormData()
 
-        // fd.append('client_token', token)
-        // fd.append('customerCardId', card)
-        // fd.append('customerRealName', name)
-        // fd.append('id', customerId)
-        fd.append('file', files)
+        fd.append('file', files[0])
+        fd.append('file', files[1])
+        fd.append('file', files[2])
 
-        axios
-            .post(
-                URL_GO_REAL_NAME +
-                    `?${qs.stringify({
-                        client_token: token,
-                        customerCardId: card,
-                        customerRealName: name,
-                        id: customerId
-                    })}`,
-                fd,
-                {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                }
-            )
+        fetch(
+            URL_GO_REAL_NAME +
+                `?${qs.stringify({
+                    client_token: token,
+                    customerCardId: card,
+                    customerRealName: name,
+                    id: customerId
+                })}`,
+            {
+                method: 'POST',
+                body: fd
+            }
+        )
+            .then(res => res.json())
             .then(res => {
                 if (res.code != 1) {
                     notification.error({
@@ -64,7 +68,7 @@ class Verify extends React.Component {
             })
     }
     onFileInputChange = eve => {
-        this.state.files.push(eve.target.value)
+        this.state.files.push(eve.target.files[0])
     }
     render() {
         const { name, card } = this.state
