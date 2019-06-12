@@ -3,6 +3,7 @@ import * as React from 'react'
 import { notification } from 'antd'
 import { URL_GO_REAL_NAME } from 'utils/urls'
 import { connect } from 'react-redux'
+import qs from 'query-string'
 
 class Verify extends React.Component {
     state = {
@@ -28,21 +29,21 @@ class Verify extends React.Component {
 
         const fd = new FormData()
 
-        fd.append('client_token', token)
-        fd.append('customerCardId', card)
-        fd.append('customerRealName', name)
-        fd.append('id', customerId)
+        // fd.append('client_token', token)
+        // fd.append('customerCardId', card)
+        // fd.append('customerRealName', name)
+        // fd.append('id', customerId)
         fd.append('file', files)
 
         axios
             .post(
-                URL_GO_REAL_NAME,
-                //     {
-                //     client_token: token,
-                //     customerCardId: card,
-                //     customerRealName: name,
-                //     id: customerId
-                // }
+                URL_GO_REAL_NAME +
+                    `?${qs.stringify({
+                        client_token: token,
+                        customerCardId: card,
+                        customerRealName: name,
+                        id: customerId
+                    })}`,
                 fd,
                 {
                     headers: { 'Content-Type': 'multipart/form-data' }
