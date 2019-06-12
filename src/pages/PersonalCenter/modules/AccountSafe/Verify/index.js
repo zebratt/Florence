@@ -1,53 +1,72 @@
-import './style.scss';
-import * as React from 'react';
-import { notification } from 'antd';
-import { URL_GO_REAL_NAME } from 'utils/urls';
-import { connect } from 'react-redux';
+import './style.scss'
+import * as React from 'react'
+import { notification } from 'antd'
+import { URL_GO_REAL_NAME } from 'utils/urls'
+import { connect } from 'react-redux'
 
 class Verify extends React.Component {
     state = {
         name: '',
-        card: ''
-    };
+        card: '',
+        files: []
+    }
     onSubmit = () => {
-        const { name, card } = this.state;
-        const { customerId, token } = this.props;
+        const { name, card, files } = this.state
+        const { customerId, token } = this.props
 
         if (!name) {
             return notification.warning({
                 message: '真实姓名不得为空！'
-            });
+            })
         }
 
         if (!/^\d{15,18}.$/.test(card)) {
             return notification.warning({
                 message: '身份证格式有误，请重新输入！'
-            });
+            })
         }
 
+        const fd = new FormData()
+
+        fd.append('client_token', token)
+        fd.append('customerCardId', card)
+        fd.append('customerRealName', name)
+        fd.append('id', customerId)
+        fd.append('file', files)
+
         axios
-            .post(URL_GO_REAL_NAME, {
-                client_token: token,
-                customerCardId: card,
-                customerRealName: name,
-                id: customerId
-            })
+            .post(
+                URL_GO_REAL_NAME,
+                //     {
+                //     client_token: token,
+                //     customerCardId: card,
+                //     customerRealName: name,
+                //     id: customerId
+                // }
+                fd,
+                {
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                }
+            )
             .then(res => {
                 if (res.code != 1) {
                     notification.error({
                         message: res.msg
-                    });
+                    })
                 } else {
                     notification.success({
                         message: '提交成功！'
-                    });
+                    })
 
-                    this.props.history.goBack();
+                    this.props.history.goBack()
                 }
-            });
-    };
+            })
+    }
+    onFileInputChange = eve => {
+        this.state.files.push(eve.target.value)
+    }
     render() {
-        const { name, card } = this.state;
+        const { name, card } = this.state
         return (
             <div id="Verify">
                 <div className="verify-title">实名认证</div>
@@ -62,7 +81,7 @@ class Verify extends React.Component {
                         onChange={eve => {
                             this.setState({
                                 name: eve.target.value
-                            });
+                            })
                         }}
                     />
                 </div>
@@ -77,27 +96,37 @@ class Verify extends React.Component {
                         onChange={eve => {
                             this.setState({
                                 card: eve.target.value
-                            });
+                            })
                         }}
                     />
+                </div>
+                <div className="line">
+                    <div className="label">身份证正面</div>
+                    <input type="file" onChange={this.onFileInputChange} />
+                </div>
+                <div className="line">
+                    <div className="label">身份证反面</div>
+                    <input type="file" onChange={this.onFileInputChange} />
+                </div>
+                <div className="line">
+                    <div className="label">手持身份证</div>
+                    <input type="file" onChange={this.onFileInputChange} />
                 </div>
                 <div className="line">
                     <button className="btn" onClick={this.onSubmit}>
                         提交
                     </button>
                 </div>
-                <div className="warning">
-                客户信息涉及到提款出金，请务必正确填写
-                </div>
+                <div className="warning">客户信息涉及到提款出金，请务必正确填写</div>
             </div>
-        );
+        )
     }
 }
 
 const mapStateToProps = state => {
-    const { Home } = state;
+    const { Home } = state
 
-    return Object.assign({}, Home);
-};
+    return Object.assign({}, Home)
+}
 
-export default connect(mapStateToProps)(Verify);
+export default connect(mapStateToProps)(Verify)
