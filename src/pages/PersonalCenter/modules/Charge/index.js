@@ -25,7 +25,8 @@ class Charge extends React.Component {
             if (!err) {
                 this.setState({
                     visible: true,
-                    ...values
+                    amount: values.amount,
+                    remark: values.remark
                 })
             }
         })
