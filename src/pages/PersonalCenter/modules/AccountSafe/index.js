@@ -4,38 +4,39 @@
  * @date: 2017/11/18.
  */
 
-import './style.scss';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import _get from 'lodash/get';
-import { bindActionCreators } from 'redux';
-import actions from './action';
-import classNames from 'classnames';
-import { Route } from 'react-router-dom';
-import Verify from './Verify';
+import './style.scss'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import _get from 'lodash/get'
+import { bindActionCreators } from 'redux'
+import actions from './action'
+import classNames from 'classnames'
+import { Route } from 'react-router-dom'
+import Verify from './Verify'
 
 class AccountSafe extends Component {
     componentDidMount() {
-        const { getRealNameStatus, customerId } = this.props;
-        getRealNameStatus(customerId);
+        const { getRealNameStatus, customerId } = this.props
+        getRealNameStatus(customerId)
     }
     gotoVerify = () => {
-        this.props.history.push('safe/verify');
-    };
+        this.props.history.push('safe/verify')
+    }
     render() {
-        const { cwpCustomers, hasRealName, idCard, name } = this.props;
-        const phone = _get(cwpCustomers, 'customerPhone');
+        const { cwpCustomers, hasRealName, idCard, name, images } = this.props
+        const phone = _get(cwpCustomers, 'customerPhone')
         const realNameClasses = classNames({
             checked: true,
             green: hasRealName
-        });
+        })
         const realNameContent = hasRealName ? (
             <span>已确认</span>
         ) : (
             <button className="btn" onClick={this.gotoVerify}>
                 去添加
             </button>
-        );
+        )
+        const imgArr = images.split(',')
 
         return (
             <div>
@@ -74,26 +75,50 @@ class AccountSafe extends Component {
                         </tr>
                     </tbody>
                 </table>
+                <br />
+                <br />
+                <h2>身份证照片</h2>
+                <br />
+                <table>
+                    <tbody>
+                        <tr>
+                            {imgArr.map((img, idx) => {
+                                return (
+                                    <td key={idx} style={{ padding: 4 }}>
+                                        <img src={img} width="200" />
+                                    </td>
+                                )
+                            })}
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        );
+        )
     }
 }
 
 const mapStateToProps = state => {
-    const { Home, Safe } = state;
+    const { Home, Safe } = state
 
-    return Object.assign({}, Home, Safe);
-};
+    return Object.assign({}, Home, Safe)
+}
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators(actions, dispatch);
-};
+    return bindActionCreators(actions, dispatch)
+}
 
 export default () => {
     return (
         <div id="AccountSafe">
             <Route path="/personal/safe/verify" component={Verify} />
-            <Route exact path="/personal/safe" component={connect(mapStateToProps, mapDispatchToProps)(AccountSafe)} />
+            <Route
+                exact
+                path="/personal/safe"
+                component={connect(
+                    mapStateToProps,
+                    mapDispatchToProps
+                )(AccountSafe)}
+            />
         </div>
-    );
-};
+    )
+}

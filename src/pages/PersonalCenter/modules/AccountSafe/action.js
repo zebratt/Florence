@@ -17,7 +17,8 @@ export default createActions({
             return {
                 hasRealName: true,
                 idCard: res.data.customerCardId,
-                name: res.data.customerRealName
+                name: res.data.customerRealName,
+                images: res.data.verified.images
             };
         }
     }

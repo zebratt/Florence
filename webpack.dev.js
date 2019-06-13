@@ -2,7 +2,6 @@ const merge = require('webpack-merge');
 const path = require('path');
 const webpack = require('webpack');
 const common = require('./webpack.common');
-const DashboardPlugin = require('webpack-dashboard/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
@@ -26,7 +25,6 @@ module.exports = merge(common, {
     }
   },
   plugins: [
-    new DashboardPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: '起点',
