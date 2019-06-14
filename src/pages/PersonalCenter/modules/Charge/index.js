@@ -33,7 +33,7 @@ class Charge extends React.Component {
     }
     onAmountChange = eve => {
         this.setState({
-            dollar: eve.target.value * 7.5
+            dollar: (eve.target.value / 7.75).toFixed(2)
         })
     }
     onOk = () => {
@@ -88,7 +88,7 @@ class Charge extends React.Component {
                                     ]
                                 })(<Input type="number" onChange={this.onAmountChange} />)}
                             </Form.Item>
-                            汇率：<span className="red">7.5</span>&nbsp; 手续费：<span className="red">0</span>&nbsp;
+                            汇率：<span className="red">7.75</span>&nbsp; 手续费：<span className="red">0</span>&nbsp;
                             美元：<span className="red">{this.state.dollar}</span>&nbsp;
                         </div>
                         <div className="row">
