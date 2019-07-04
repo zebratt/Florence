@@ -41,7 +41,7 @@ class Charge extends React.Component {
         fetch(
             `/serverInterface/payment/recharge?${qs.stringify({
                 customerId,
-                amount: this.state.amount,
+                amount: this.state.dollar,
                 remark: this.state.remark
             })}`
         )
